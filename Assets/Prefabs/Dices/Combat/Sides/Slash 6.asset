@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 108729da14e960741a8f4c6360cea467, type: 3}
+  m_Name: Slash 6
+  m_EditorClassIdentifier: 
+  sideSprite: {fileID: 2482976900042804838, guid: 3c6175d4d345a4c4eb575aff91e2d673,
+    type: 3}
+  value: 6
+  sideName: "\uBCA0\uAE30"
+  description: "\uC8FC\uC0AC\uC704 \uB208 \uB9CC\uD07C \uC801\uC5D0\uAC8C \uB370\uBBF8\uC9C0\uB97C
+    \uC785\uD78C\uB2E4."

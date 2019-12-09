@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 108729da14e960741a8f4c6360cea467, type: 3}
+  m_Name: Step 2
+  m_EditorClassIdentifier: 
+  sideSprite: {fileID: -1723999162899210094, guid: 1cb2efdd851c3884591fac2f9b1bee06,
+    type: 3}
+  value: 2
+  sideName: "\uBC1C\uAC78\uC74C"
+  description: "\uC8FC\uC0AC\uC704 \uB208 \uB9CC\uD07C \uC55E\uC73C\uB85C \uC774\uB3D9\uD55C\uB2E4."
+  diceEffect: {fileID: 11400000, guid: 86beeae450b547849aa30a9258bf8820, type: 2}
