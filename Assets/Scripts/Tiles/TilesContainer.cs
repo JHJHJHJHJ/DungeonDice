@@ -29,12 +29,14 @@ namespace DungeonDice.Tiles
 
             foreach (Transform spawnPos in spawnPositions)
             {
-                Tile tileToSpawn = tilesDatabase.tilePrefabs[Random.Range(0, tilesDatabase.tilePrefabs.Length)].GetComponent<Tile>();
+                Tile tileToSpawn = tilesDatabase.normalTiles[Random.Range(0, tilesDatabase.normalTiles.Length)].GetComponent<Tile>();
                 Tile newTile = Instantiate(tileToSpawn, spawnPos.position, Quaternion.identity, transform);
 
                 currentTileList.Add(newTile);
             }
         }
+
+
     }
 }
 

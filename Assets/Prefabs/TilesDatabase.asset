@@ -12,6 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c733c78e47ec9c5489c2f88525779c2f, type: 3}
   m_Name: TilesDatabase
   m_EditorClassIdentifier: 
-  tilePrefabs:
+  normalTiles:
   - {fileID: 3573988657327699693, guid: 1a9b8d7a103c23b47ad7ca947161e25c, type: 3}
+  stairTiles:
   - {fileID: 3711078507801759420, guid: f89af976c5457d64d8afaee60a2d45cf, type: 3}
+  monsterTiles:
+  - {fileID: 1443783487775258389, guid: 51a093f0f2ece89428481f9aa6d6c770, type: 3}
+  treasureTiles:
+  - {fileID: 4160454799220381737, guid: 03f04af9ad6eb9b4f856fcb9b6b2c8f7, type: 3}

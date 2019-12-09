@@ -43,9 +43,16 @@ namespace DungeonDice.Core
                 diceUI.SetUIAtPhase(Phase.TileEvent);
 
                 Tile currentTile = tilesContainer.currentTileList[player.currentTileIndex].GetComponent<Tile>();
-                StartCoroutine(GetComponent<EventManager>().InitializeTileEvent());
 
-                phaseManager.SetPhase(Phase.etc);
+                if(currentTile.tileInfo.initialTileEvent != null)
+                {
+                    StartCoroutine(GetComponent<EventManager>().InitializeTileEvent());
+                    phaseManager.SetPhase(Phase.etc);
+                }
+                else
+                {
+                    phaseManager.SetPhase(Phase.Explore);
+                }                           
             }
         }
     }

@@ -5,7 +5,10 @@ namespace DungeonDice.Tiles
     [CreateAssetMenu(fileName = "TilesDatabase", menuName = "DungeonDice/New TilesDatabase", order = 0)]
     public class TilesDatabase : ScriptableObject
     {
-        public GameObject[] tilePrefabs;
+        public GameObject[] normalTiles;
+        public GameObject[] stairTiles;
+        public GameObject[] monsterTiles;
+        public GameObject[] treasureTiles;
     }
 }
 

@@ -17,6 +17,7 @@ namespace DungeonDice.Tiles
     [System.Serializable]
     public class TileInfo
     {
+        public TileType tileType;
         public int number;
         public string name;
         public Ground ground;
