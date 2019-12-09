@@ -15,7 +15,7 @@ PrefabInstance:
     - target: {fileID: 3352228441126411406, guid: 3e27a632d3791354daa32018560977b3,
         type: 3}
       propertyPath: tileInfo.name
-      value: "\uD480"
+      value: "\uAE30\uBCF8"
       objectReference: {fileID: 0}
     - target: {fileID: 3352228441126411406, guid: 3e27a632d3791354daa32018560977b3,
         type: 3}
@@ -32,6 +32,11 @@ PrefabInstance:
         type: 3}
       propertyPath: tileInfo.initialTileEvent
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3352228441126411406, guid: 3e27a632d3791354daa32018560977b3,
+        type: 3}
+      propertyPath: tileInfo.description
+      value: "\uAE30\uBCF8 \uD0C0\uC77C"
       objectReference: {fileID: 0}
     - target: {fileID: 3352228441126411407, guid: 3e27a632d3791354daa32018560977b3,
         type: 3}
@@ -86,6 +91,16 @@ PrefabInstance:
     - target: {fileID: 3352228441126411407, guid: 3e27a632d3791354daa32018560977b3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3352228441549822675, guid: 3e27a632d3791354daa32018560977b3,
+        type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3352228441549822675, guid: 3e27a632d3791354daa32018560977b3,
+        type: 3}
+      propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

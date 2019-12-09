@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f281786ab5b1cc4da79b75dd870703e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventManager: {fileID: 0}
+  currentFloor: 3
 --- !u!114 &364600360447832877
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,6 +76,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   eventTextBox: {fileID: 0}
+  timeToType: 0.02
   isActivating: 0
 --- !u!114 &364600360447832874
 MonoBehaviour:
@@ -89,4 +90,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 438cadc25fef7eb429b0bfead1850416, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeToFade: 0.2
+  tileTrasparentRate: 0.15
   yOffset: 0.4
+  dropHeight: 0.5
+  dropSpeed: 2.5

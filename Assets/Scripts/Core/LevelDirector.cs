@@ -9,6 +9,7 @@ namespace DungeonDice.Core
     public class LevelDirector : MonoBehaviour
     {
         [SerializeField] float timeToFade = 0.5f;
+        [SerializeField] float tileTrasparentRate = 0.2f;
         [SerializeField] float yOffset = 0.4f;
         [SerializeField] float dropHeight = 0.4f;
         [SerializeField] float dropSpeed = 0.5f;
@@ -90,7 +91,7 @@ namespace DungeonDice.Core
         {
             float alpha = 1f;
 
-            while (alpha >= 0.2f)
+            while (alpha >= tileTrasparentRate)
             {
                 for (int i = 0; i < tilesContainer.currentTileList.Count; i++)
                 {
@@ -104,7 +105,7 @@ namespace DungeonDice.Core
                     }
                 }
 
-                alpha -= Time.deltaTime / timeToFade * 0.8f;
+                alpha -= Time.deltaTime / timeToFade * (1f - tileTrasparentRate);
 
                 yield return null;
             }

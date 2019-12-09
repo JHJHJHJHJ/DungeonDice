@@ -9,12 +9,12 @@ namespace DungeonDice.Core
 {
     public class GameMaster : MonoBehaviour
     {
-        public GameObject eventManager;
-
         Player player;
         TilesContainer tilesContainer;
         PhaseManager phaseManager;
         DiceUI diceUI;
+
+        [SerializeField] int currentFloor;
 
         private void Awake() 
         {

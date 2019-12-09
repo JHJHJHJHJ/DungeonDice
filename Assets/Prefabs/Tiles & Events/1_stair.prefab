@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4175346570852686993}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.025, z: 0}
+  m_LocalPosition: {x: 0, y: -0.025, z: -1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3711078507801759411}
@@ -95,7 +95,7 @@ PrefabInstance:
     - target: {fileID: 3352228441126411406, guid: 3e27a632d3791354daa32018560977b3,
         type: 3}
       propertyPath: tileInfo.name
-      value: "\uBCF4\uBB3C"
+      value: "\uACC4\uB2E8"
       objectReference: {fileID: 0}
     - target: {fileID: 3352228441126411406, guid: 3e27a632d3791354daa32018560977b3,
         type: 3}
@@ -107,6 +107,17 @@ PrefabInstance:
       propertyPath: tileInfo.number
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3352228441126411406, guid: 3e27a632d3791354daa32018560977b3,
+        type: 3}
+      propertyPath: tileInfo.description
+      value: "\uB2E4\uC74C \uCE35\uC73C\uB85C \uAC00\uB294 \uACC4\uB2E8"
+      objectReference: {fileID: 0}
+    - target: {fileID: 3352228441126411406, guid: 3e27a632d3791354daa32018560977b3,
+        type: 3}
+      propertyPath: tileInfo.ground
+      value: 
+      objectReference: {fileID: 5256366756924315103, guid: 4a09caa4ad188e24aa8d1aad41da99d6,
+        type: 3}
     - target: {fileID: 3352228441126411407, guid: 3e27a632d3791354daa32018560977b3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -160,6 +171,11 @@ PrefabInstance:
     - target: {fileID: 3352228441126411407, guid: 3e27a632d3791354daa32018560977b3,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3352228441549822675, guid: 3e27a632d3791354daa32018560977b3,
+        type: 3}
+      propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
