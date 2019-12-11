@@ -1,9 +1,14 @@
 using UnityEngine;
 
-public class PhaseManager : MonoBehaviour 
+public class StateHolder : MonoBehaviour 
 {
-    Phase currentPhase;
+    [SerializeField] Phase currentPhase;
     int floor = 1;
+
+    public delegate void SetAndHandlePhase();
+    public SetAndHandlePhase SetPhaseToExplore;
+    public SetAndHandlePhase SetPhaseToEvent;
+    public SetAndHandlePhase SetPhaseToCombat;
 
     public void SetPhase(Phase phaseToSet)
     {

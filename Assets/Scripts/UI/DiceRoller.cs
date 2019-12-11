@@ -1,18 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using DungeonDice.Characters;
 
 namespace DungeonDice.Dices
 {
-    public class DiceRoll : MonoBehaviour
+    public class DiceRoller : MonoBehaviour // DiceRoller로 이름 바꾸자
     {
         Dice diceToRoll;
 
         public bool isRolling = false;
-        
-        int resultIndex;
+        public int resultIndex;
 
         public void TriggerDiceRoll(Dice diceToRoll)
         {
@@ -32,13 +29,8 @@ namespace DungeonDice.Dices
             GetComponent<SpriteRenderer>().sprite = diceToRoll.sides[resultIndex].sideSprite;
         }
 
-        public void ActivateDiceEffect() // 애니메이션에서 실행됨
+        public void DiceRollEnded() // 애니메이션에서 실행됨
         {
-            Side resultSide = diceToRoll.sides[resultIndex]; 
-            print(resultSide.name + " " + resultSide.value);
-
-            resultSide.diceEffect.Activate(resultSide.value);
-
             isRolling = false;
         }
     }

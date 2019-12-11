@@ -73,7 +73,7 @@ namespace DungeonDice.Characters
             animator.SetBool("isMoving", false);
             UpdateCurrentTile();
 
-            FindObjectOfType<PhaseManager>().SetPhase(Phase.TileEvent);
+            FindObjectOfType<StateHolder>().SetPhaseToEvent();
         }
 
         bool MoveToNextTile(Transform targetTile)

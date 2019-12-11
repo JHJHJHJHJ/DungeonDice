@@ -11,48 +11,55 @@ namespace DungeonDice.Core
     {
         Player player;
         TilesContainer tilesContainer;
-        PhaseManager phaseManager;
+        StateHolder stateHolder;
         DiceUI diceUI;
 
-        private void Awake() 
+        private void Awake()
         {
             player = FindObjectOfType<Player>();
-            tilesContainer = FindObjectOfType<TilesContainer>();    
-            phaseManager = GetComponent<PhaseManager>();
+            tilesContainer = FindObjectOfType<TilesContainer>();
+            stateHolder = GetComponent<StateHolder>();
             diceUI = FindObjectOfType<DiceUI>();
         }
 
         private void Start()
         {
-            phaseManager.SetPhase(Phase.Explore);
-            phaseManager.SetFloor(1);
+            stateHolder.SetPhaseToExplore += HandleExplorePhase;
+            stateHolder.SetPhaseToEvent += HandleTileEventPhase;
+            stateHolder.SetPhaseToCombat += HandleCombatPhase;
+
+            stateHolder.SetPhaseToExplore();
+            stateHolder.SetFloor(1);
         }
 
-        void Update()
+        void HandleExplorePhase()
         {
-            if(phaseManager.GetCurrentPhase() == Phase.Explore && !player.isMoving)
+            stateHolder.SetPhase(Phase.EXPLORE);
+            diceUI.SetUIAtPhase(Phase.EXPLORE);
+        }
+
+        void HandleTileEventPhase()
+        {
+            stateHolder.SetPhase(Phase.EVENT);
+
+            diceUI.SetUIAtPhase(Phase.EVENT);
+
+            Tile currentTile = tilesContainer.currentTileList[player.currentTileIndex].GetComponent<Tile>();
+
+            if (currentTile.tileInfo.initialTileEvent != null)
             {
-                diceUI.SetUIAtPhase(Phase.Explore);
-
-                phaseManager.SetPhase(Phase.etc);
+                StartCoroutine(GetComponent<EventManager>().InitializeTileEvent());
             }
-
-            if(phaseManager.GetCurrentPhase() == Phase.TileEvent && !player.isMoving)
+            else
             {
-                diceUI.SetUIAtPhase(Phase.TileEvent);
-
-                Tile currentTile = tilesContainer.currentTileList[player.currentTileIndex].GetComponent<Tile>();
-
-                if(currentTile.tileInfo.initialTileEvent != null)
-                {
-                    StartCoroutine(GetComponent<EventManager>().InitializeTileEvent());
-                    phaseManager.SetPhase(Phase.etc);
-                }
-                else
-                {
-                    phaseManager.SetPhase(Phase.Explore);
-                }                           
+                stateHolder.SetPhaseToExplore();
             }
+        }
+
+        void HandleCombatPhase()
+        {
+            stateHolder.SetPhase(Phase.COMBAT);
+            diceUI.SetUIAtPhase(Phase.COMBAT);
         }
     }
 }

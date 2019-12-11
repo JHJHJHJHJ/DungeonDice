@@ -191,7 +191,7 @@ namespace DungeonDice.Core
 
             yield return StartCoroutine(levelDirector.SetLevelToExplorePhase(FindObjectOfType<Ground>(), tilesContainer, player));
 
-            FindObjectOfType<PhaseManager>().SetPhase(Phase.Explore);
+            FindObjectOfType<StateHolder>().SetPhaseToExplore();
         }
     }
 }

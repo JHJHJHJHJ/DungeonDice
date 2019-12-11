@@ -45,7 +45,9 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\Characters\Enemy.cs" />
      <Compile Include="Assets\Scripts\Characters\Player.cs" />
+     <Compile Include="Assets\Scripts\Combat\CombatManager.cs" />
      <Compile Include="Assets\Scripts\Core\EventManager.cs" />
      <Compile Include="Assets\Scripts\Core\EventTextBox.cs" />
      <Compile Include="Assets\Scripts\Core\GameMaster.cs" />
@@ -53,13 +55,13 @@
      <Compile Include="Assets\Scripts\Dices\Dice.cs" />
      <Compile Include="Assets\Scripts\Dices\DiceContainer.cs" />
      <Compile Include="Assets\Scripts\Dices\DiceEffect.cs" />
-     <Compile Include="Assets\Scripts\Dices\DiceRoll.cs" />
      <Compile Include="Assets\Scripts\Dices\Effects\MovePlayer.cs" />
      <Compile Include="Assets\Scripts\Dices\Side.cs" />
      <Compile Include="Assets\Scripts\Phase.cs" />
-     <Compile Include="Assets\Scripts\PhaseManager.cs" />
+     <Compile Include="Assets\Scripts\StateHolder.cs" />
      <Compile Include="Assets\Scripts\Stats\HP.cs" />
      <Compile Include="Assets\Scripts\Tiles\Effects\MoveToNextFloor.cs" />
+     <Compile Include="Assets\Scripts\Tiles\Effects\TriggerCombat.cs" />
      <Compile Include="Assets\Scripts\Tiles\Ground.cs" />
      <Compile Include="Assets\Scripts\Tiles\Tile.cs" />
      <Compile Include="Assets\Scripts\Tiles\TileEvent.cs" />
@@ -68,6 +70,7 @@
      <Compile Include="Assets\Scripts\Tiles\TilesContainer.cs" />
      <Compile Include="Assets\Scripts\Tiles\TilesDatabase.cs" />
      <Compile Include="Assets\Scripts\Tiles\TileType.cs" />
+     <Compile Include="Assets\Scripts\UI\DiceRoller.cs" />
      <Compile Include="Assets\Scripts\UI\DiceUI.cs" />
      <Compile Include="Assets\Scripts\UI\HPDisplay.cs" />
      <Compile Include="Assets\SpriteOutline\Scripts\Extensions\ArrayExt.cs" />

@@ -8,9 +8,9 @@ namespace DungeonDice.Tiles
     {
         public override void Activate()
         {
-            PhaseManager phaseManager = FindObjectOfType<PhaseManager>();
-            phaseManager.SetFloor(phaseManager.GetCurrentFloor() + 1);
-            FindObjectOfType<TilesContainer>().GenerateLevel(phaseManager.GetCurrentFloor());
+            StateHolder stateHolder = FindObjectOfType<StateHolder>();
+            stateHolder.SetFloor(stateHolder.GetCurrentFloor() + 1);
+            FindObjectOfType<TilesContainer>().GenerateLevel(stateHolder.GetCurrentFloor());
 
             TilesContainer tilesContainer = FindObjectOfType<TilesContainer>();
             Player player = FindObjectOfType<Player>();

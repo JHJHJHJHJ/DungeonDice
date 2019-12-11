@@ -3,6 +3,8 @@ using UnityEngine.UI;
 using DungeonDice.Dices;
 using TMPro;
 using DungeonDice.Characters;
+using DungeonDice.Combat;
+using System.Collections;
 
 namespace DungeonDice.UI
 {
@@ -26,9 +28,6 @@ namespace DungeonDice.UI
         [SerializeField] Image[] combatDiceDetailWindowSides;
         [SerializeField] TextMeshProUGUI combatNameText;
         [SerializeField] TextMeshProUGUI combatDescriptionText;
-
-        [HideInInspector]
-        public bool canClick = true;
 
         bool exploreWindowIsOpen = false;
         bool combatWindowIsOpen = false;
@@ -238,6 +237,7 @@ namespace DungeonDice.UI
             {
                 diceToRoll = diceContainer.currentCombatDice;
                 currentDiceUIImage = currentCombatDiceImage;
+                FindObjectOfType<CombatManager>().state = CombatState.PLAYERTURN;
             }
 
             ShutWindows();
@@ -247,9 +247,30 @@ namespace DungeonDice.UI
             currentDiceUIImage.color = new Color32(255, 255, 255, 127);
             currentDiceUIImage.GetComponent<Button>().enabled = false;
 
-            playerDice.SetActive(true);
+            StartCoroutine(Roll(diceToRoll));
+        }
 
-            playerDice.GetComponent<DiceRoll>().TriggerDiceRoll(diceToRoll);
+        IEnumerator Roll(Dice diceToRoll)
+        {
+            playerDice.SetActive(true);
+            DiceRoller diceRoller = playerDice.GetComponent<DiceRoller>();
+            diceRoller.TriggerDiceRoll(diceToRoll);
+
+            while(diceRoller.isRolling)
+            {
+                yield return null;
+            }
+
+            Side resultSide = diceToRoll.sides[diceRoller.resultIndex];
+
+            if (FindObjectOfType<StateHolder>().GetCurrentPhase() == Phase.COMBAT)
+            {
+                StartCoroutine(FindObjectOfType<CombatManager>().DoAction(resultSide));
+            }
+            else
+            {
+                resultSide.diceEffect.Activate(resultSide.value, null);
+            }
         }
 
         public void SetUIAtPhase(Phase phase)
@@ -264,14 +285,26 @@ namespace DungeonDice.UI
             currentCombatDiceImage.color = new Color32(255, 255, 255, 255);
             currentCombatDiceImage.GetComponent<Button>().enabled = true;
 
-            if (phase == Phase.Explore)
+            if (phase == Phase.EXPLORE)
             {
                 exploreRollButton.SetActive(true);
             }
-            else if(phase == Phase.Combat)
+            else if(phase == Phase.COMBAT)
             {
                 combatRollButton.SetActive(true);
             }
+        }
+
+        bool CanClick()
+        {
+            if(FindObjectOfType<StateHolder>().GetCurrentPhase() == Phase.COMBAT)
+            {
+                if(FindObjectOfType<CombatManager>().state != CombatState.STANDBY)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
