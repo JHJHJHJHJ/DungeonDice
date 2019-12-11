@@ -12,6 +12,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 0_normal
       objectReference: {fileID: 0}
+    - target: {fileID: 3352228441126411392, guid: 3e27a632d3791354daa32018560977b3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tile
+      objectReference: {fileID: 0}
     - target: {fileID: 3352228441126411406, guid: 3e27a632d3791354daa32018560977b3,
         type: 3}
       propertyPath: tileInfo.name

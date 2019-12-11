@@ -40,8 +40,8 @@ namespace DungeonDice.Core
         {
             isActivating = true;
 
-            // levelDirector.SetLevelToEventPhase(player.currentTile.tileInfo.ground, tilesContainer, player);
             tileName.text = player.currentTile.tileInfo.name;
+
             yield return StartCoroutine(levelDirector.SetLevelToEventPhase(player.currentTile.tileInfo.ground, tilesContainer, player));
 
             eventTextBox.gameObject.SetActive(true);
@@ -52,7 +52,13 @@ namespace DungeonDice.Core
                 yield return null;
             }
 
-            UpdateEvent(player.currentTile.tileInfo.initialTileEvent);
+            MoveToNextEvent(player.currentTile.tileInfo.initialTileEvent);
+        }
+
+        void MoveToNextEvent(TileEvent eventToUpdate)
+        {
+            UpdateEvent(eventToUpdate);
+            HandleEvent();
         }
 
         void UpdateEvent(TileEvent eventToUpdate)
@@ -63,18 +69,30 @@ namespace DungeonDice.Core
             }
 
             currentEvent = eventToUpdate;
-            descriptionQueue = new Queue<string>();
 
+            descriptionQueue = new Queue<string>();
             foreach (string description in currentEvent.descriptions)
             {
                 descriptionQueue.Enqueue(description);
             }
-            UpdateDescription();
 
             nextEvents.Clear();
             for (int i = 0; i < eventToUpdate.nextEvents.Length; i++)
             {
                 nextEvents.Add(eventToUpdate.nextEvents[i]);
+            }
+        }
+
+        void HandleEvent()
+        {
+            if(currentEvent.tileEventEffect != null)
+            {
+                currentEvent.tileEventEffect.Activate();
+            }
+
+            if(currentEvent.descriptions.Length != 0)
+            {
+                UpdateDescription();
             }
         }
 
@@ -141,7 +159,7 @@ namespace DungeonDice.Core
             if (nextEvents.Count < 1) StartCoroutine(EndEvent());
             else
             {
-                UpdateEvent(nextEvents[0]);
+                MoveToNextEvent(nextEvents[0]);
             }
         }
 
@@ -150,14 +168,13 @@ namespace DungeonDice.Core
             if (nextEvents.Count < 2) StartCoroutine(EndEvent());
             else
             {
-                UpdateEvent(nextEvents[1]);
+                MoveToNextEvent(nextEvents[1]);
             }
         }
 
         IEnumerator EndEvent()
         {
             isActivating = false;
-
 
             foreach (Button button in buttons)
             {
@@ -171,7 +188,9 @@ namespace DungeonDice.Core
             }
 
             tileName.text = "";
+
             yield return StartCoroutine(levelDirector.SetLevelToExplorePhase(FindObjectOfType<Ground>(), tilesContainer, player));
+
             FindObjectOfType<PhaseManager>().SetPhase(Phase.Explore);
         }
     }

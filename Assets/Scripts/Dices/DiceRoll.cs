@@ -37,7 +37,7 @@ namespace DungeonDice.Dices
             Side resultSide = diceToRoll.sides[resultIndex]; 
             print(resultSide.name + " " + resultSide.value);
 
-            resultSide.diceEffect.Effect(resultSide.value);
+            resultSide.diceEffect.Activate(resultSide.value);
 
             isRolling = false;
         }

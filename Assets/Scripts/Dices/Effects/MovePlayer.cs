@@ -6,7 +6,7 @@ namespace DungeonDice.Dices
     [CreateAssetMenu(fileName = "MovePlayer", menuName = "DungeonDice/Dice Effect/MovePlayer")]
     public class MovePlayer : DiceEffect
     {
-        public override void Effect(int value)
+        public override void Activate(int value)
         {
             Player player = FindObjectOfType<Player>();
             player.StartCoroutine(player.Move(value));

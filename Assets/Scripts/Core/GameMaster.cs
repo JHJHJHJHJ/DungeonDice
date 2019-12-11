@@ -14,8 +14,6 @@ namespace DungeonDice.Core
         PhaseManager phaseManager;
         DiceUI diceUI;
 
-        [SerializeField] int currentFloor;
-
         private void Awake() 
         {
             player = FindObjectOfType<Player>();
@@ -27,6 +25,7 @@ namespace DungeonDice.Core
         private void Start()
         {
             phaseManager.SetPhase(Phase.Explore);
+            phaseManager.SetFloor(1);
         }
 
         void Update()

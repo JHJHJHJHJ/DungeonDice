@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4175346570852686993}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.025, z: -1}
+  m_LocalPosition: {x: 0, y: -0.025, z: -0.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3711078507801759411}
@@ -92,6 +92,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: 1_stair
       objectReference: {fileID: 0}
+    - target: {fileID: 3352228441126411392, guid: 3e27a632d3791354daa32018560977b3,
+        type: 3}
+      propertyPath: m_TagString
+      value: Tile
+      objectReference: {fileID: 0}
     - target: {fileID: 3352228441126411406, guid: 3e27a632d3791354daa32018560977b3,
         type: 3}
       propertyPath: tileInfo.name
@@ -118,6 +123,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 5256366756924315103, guid: 4a09caa4ad188e24aa8d1aad41da99d6,
         type: 3}
+    - target: {fileID: 3352228441126411406, guid: 3e27a632d3791354daa32018560977b3,
+        type: 3}
+      propertyPath: tileInfo.initialTileEvent
+      value: 
+      objectReference: {fileID: 11400000, guid: 3b458eaf855fe9f458dc149d9d6db816,
+        type: 2}
     - target: {fileID: 3352228441126411407, guid: 3e27a632d3791354daa32018560977b3,
         type: 3}
       propertyPath: m_LocalPosition.x

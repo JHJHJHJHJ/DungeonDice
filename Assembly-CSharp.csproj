@@ -59,9 +59,11 @@
      <Compile Include="Assets\Scripts\Phase.cs" />
      <Compile Include="Assets\Scripts\PhaseManager.cs" />
      <Compile Include="Assets\Scripts\Stats\HP.cs" />
+     <Compile Include="Assets\Scripts\Tiles\Effects\MoveToNextFloor.cs" />
      <Compile Include="Assets\Scripts\Tiles\Ground.cs" />
      <Compile Include="Assets\Scripts\Tiles\Tile.cs" />
      <Compile Include="Assets\Scripts\Tiles\TileEvent.cs" />
+     <Compile Include="Assets\Scripts\Tiles\TileEventEffect.cs" />
      <Compile Include="Assets\Scripts\Tiles\TileProgression.cs" />
      <Compile Include="Assets\Scripts\Tiles\TilesContainer.cs" />
      <Compile Include="Assets\Scripts\Tiles\TilesDatabase.cs" />
