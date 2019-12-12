@@ -5,6 +5,7 @@ using TMPro;
 using DungeonDice.Characters;
 using DungeonDice.Combat;
 using System.Collections;
+using DungeonDice.Stats;
 
 namespace DungeonDice.UI
 {
@@ -55,6 +56,8 @@ namespace DungeonDice.UI
 
         public void ChangeExploreDiceToLeft()
         {
+            if(!CanClick()) return;
+
             if (exploreDiceIndex <= 0)
             {
                 exploreDiceIndex = diceContainer.exploreDices.Count - 1;
@@ -73,6 +76,8 @@ namespace DungeonDice.UI
 
         public void ChangeExploreDiceToRight()
         {
+            if(!CanClick()) return;
+
             if (exploreDiceIndex >= diceContainer.exploreDices.Count - 1)
             {
                 exploreDiceIndex = 0;
@@ -91,6 +96,8 @@ namespace DungeonDice.UI
 
         public void ChangeCombatDiceToLeft()
         {
+            if(!CanClick()) return;
+
             if (combatDiceIndex <= 0)
             {
                 combatDiceIndex = diceContainer.combatDices.Count - 1;
@@ -109,6 +116,8 @@ namespace DungeonDice.UI
 
         public void ChangeCombatDiceToRight()
         {
+            if(!CanClick()) return;
+
             if (combatDiceIndex >= diceContainer.combatDices.Count - 1)
             {
                 combatDiceIndex = 0;
@@ -127,6 +136,8 @@ namespace DungeonDice.UI
 
         public void ToggleExploreDiceDetailWindow()
         {
+            if(!CanClick()) return;
+
             combatDiceDetailWindow.SetActive(false);
             combatWindowIsOpen = false;
 
@@ -147,6 +158,8 @@ namespace DungeonDice.UI
 
         public void ToggleCombatDiceDetailWindow()
         {
+            if(!CanClick()) return;
+
             exploreDiceDetailWindow.SetActive(false);
             exploreWindowIsOpen = false;
 
@@ -239,6 +252,10 @@ namespace DungeonDice.UI
                 currentDiceUIImage = currentCombatDiceImage;
                 FindObjectOfType<CombatManager>().state = CombatState.PLAYERTURN;
             }
+            else
+            {
+                FindObjectOfType<Player>().GetComponent<FP>().DealFP(-1f);
+            }
 
             ShutWindows();
             exploreRollButton.SetActive(false);
@@ -265,7 +282,7 @@ namespace DungeonDice.UI
 
             if (FindObjectOfType<StateHolder>().GetCurrentPhase() == Phase.COMBAT)
             {
-                StartCoroutine(FindObjectOfType<CombatManager>().DoAction(resultSide));
+                yield return StartCoroutine(FindObjectOfType<CombatManager>().DoAction(resultSide));
             }
             else
             {

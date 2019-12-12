@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3ea5bd5729ac8343960d5cc78c9cfe0, type: 3}
-  m_Name: Combat
+  m_Script: {fileID: 11500000, guid: 00ad3ddfd0eea0b4b8515bbadceb0795, type: 3}
+  m_Name: DealDamage
   m_EditorClassIdentifier: 
-  tileEventEffect: {fileID: 11400000, guid: 262f62fef1e8c764eb7e84e325a41433, type: 2}
-  descriptions: []
-  nextEvents: []
-  optionLabel: []

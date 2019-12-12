@@ -6,6 +6,7 @@ using DungeonDice.Characters;
 using DungeonDice.Tiles;
 using TMPro;
 using DungeonDice.UI;
+using DungeonDice.Combat;
 
 namespace DungeonDice.Core
 {
@@ -20,7 +21,7 @@ namespace DungeonDice.Core
         string currentDescription;
         bool isTyping = false;
 
-        TileEvent currentEvent;
+        [SerializeField] TileEvent currentEvent;
         List<TileEvent> nextEvents = new List<TileEvent>();
 
         public bool isActivating = false;
@@ -36,23 +37,39 @@ namespace DungeonDice.Core
             levelDirector = GetComponent<LevelDirector>();
         }
 
-        public IEnumerator InitializeTileEvent()
+        private void Start() 
         {
+            FindObjectOfType<CombatManager>().EndCombat += HandleEndBattle;
+        }
+
+        IEnumerator HandleEndBattle()
+        {
+            yield return StartCoroutine(OpenEventTextBox());
+
+            MoveToNextEvent(FindObjectOfType<CombatManager>().winTileEvent);
+        }
+
+        public IEnumerator InitializeTileEvent(Tile tileToInitialize)
+        {
+            yield return StartCoroutine(levelDirector.SetLevelToEventPhase(tileToInitialize.tileInfo.ground, tilesContainer, player));
+
             isActivating = true;
+            tileName.text = tileToInitialize.tileInfo.name;
 
-            tileName.text = player.currentTile.tileInfo.name;
+            yield return StartCoroutine(OpenEventTextBox());
 
-            yield return StartCoroutine(levelDirector.SetLevelToEventPhase(player.currentTile.tileInfo.ground, tilesContainer, player));
+            MoveToNextEvent(tileToInitialize.tileInfo.initialTileEvent);
+        }
 
+        IEnumerator OpenEventTextBox()
+        {
             eventTextBox.gameObject.SetActive(true);
             eventTextBox.Open();
 
             while (eventTextBox.isAnimating)
             {
                 yield return null;
-            }
-
-            MoveToNextEvent(player.currentTile.tileInfo.initialTileEvent);
+            }  
         }
 
         void MoveToNextEvent(TileEvent eventToUpdate)
@@ -117,6 +134,7 @@ namespace DungeonDice.Core
             }
 
             isTyping = false;
+
             if (descriptionQueue.Count == 0)
             {
                 SetOptionButtons(currentEvent);

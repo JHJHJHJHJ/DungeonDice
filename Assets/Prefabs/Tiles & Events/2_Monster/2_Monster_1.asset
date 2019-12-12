@@ -10,12 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e3ea5bd5729ac8343960d5cc78c9cfe0, type: 3}
-  m_Name: 2_Monster
+  m_Name: 2_Monster_1
   m_EditorClassIdentifier: 
-  tileEventEffect: {fileID: 0}
-  descriptions:
-  - "\uBAAC\uC2A4\uD130\uC640 \uB9C8\uC8FC\uCCE4\uB2E4!"
-  nextEvents:
-  - {fileID: 11400000, guid: 773c94234402d3840a685a01d55d01ac, type: 2}
-  optionLabel:
-  - "\uC2F8\uC6B4\uB2E4."
+  tileEventEffect: {fileID: 11400000, guid: 262f62fef1e8c764eb7e84e325a41433, type: 2}
+  descriptions: []
+  nextEvents: []
+  optionLabel: []

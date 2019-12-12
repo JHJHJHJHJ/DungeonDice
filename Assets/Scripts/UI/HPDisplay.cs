@@ -9,13 +9,7 @@ namespace DungeonDice.UI
     {
         [SerializeField] GameObject hpBar;
         [SerializeField] TextMeshProUGUI hpText;
-
-        HP hp;
-
-        private void Awake()
-        {
-            hp = FindObjectOfType<HP>();
-        }
+        [SerializeField] HP hp;
 
         private void Update()
         {
@@ -25,6 +19,8 @@ namespace DungeonDice.UI
 
         void UpdateBar()
         {
+            if(hpBar == null) return;
+
             float hpRatio = hp.GetCurrentHP() / hp.GetMaxHP();
             hpBar.transform.localScale = new Vector2(hpRatio, 1f);
         }

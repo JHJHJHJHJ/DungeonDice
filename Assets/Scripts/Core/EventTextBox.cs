@@ -5,7 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using DungeonDice.Tiles;
 
-namespace DungeonDice.Core
+namespace DungeonDice.UI
 {
     public class EventTextBox : MonoBehaviour
     {

@@ -48,7 +48,7 @@ namespace DungeonDice.Core
 
             if (currentTile.tileInfo.initialTileEvent != null)
             {
-                StartCoroutine(GetComponent<EventManager>().InitializeTileEvent());
+                StartCoroutine(GetComponent<EventManager>().InitializeTileEvent(currentTile));
             }
             else
             {

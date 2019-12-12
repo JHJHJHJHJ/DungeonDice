@@ -1,6 +1,6 @@
 using UnityEngine;
 using DungeonDice.Characters;
-using DungeonDice.Core;
+using DungeonDice.UI;
 using DungeonDice.Combat;
 
 namespace DungeonDice.Tiles

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using DungeonDice.Dices;
 using DungeonDice.Characters;
+using DungeonDice.Stats;
+using DungeonDice.Tiles;
 
 namespace DungeonDice.Combat
 {
@@ -15,12 +17,36 @@ namespace DungeonDice.Combat
     {
         public CombatState state;
 
+        public delegate IEnumerator EndCombatDelegate();
+        public EndCombatDelegate EndCombat;
+
+        [SerializeField] GameObject playerDice;
+
+        Player player;
+
+        Enemy enemy;
+        GameObject enemyDice;
+
+        public TileEvent winTileEvent;
+
+        private void Awake() 
+        {
+            player = FindObjectOfType<Player>();    
+        }
+
         public IEnumerator InitializeCombat()
         {
             state = CombatState.START;
 
+            enemy = FindObjectOfType<Enemy>();
+
             yield return null;
 
+            foreach(Transform child in enemy.transform)
+            {
+                child.gameObject.SetActive(true);
+            }
+            enemyDice = enemy.dice.gameObject;
             SetupStandbyState();
         }
 
@@ -28,27 +54,72 @@ namespace DungeonDice.Combat
         {
             state = CombatState.STANDBY;
             FindObjectOfType<StateHolder>().SetPhaseToCombat();
+
+            enemyDice.gameObject.SetActive(true);
+            enemyDice.GetComponent<SpriteRenderer>().sprite = enemy.GetCurrentEnemyDice().repSprite;
         }
 
         public IEnumerator DoAction(Side resultSide)
         {
             GameObject target = null;
-            if (state == CombatState.PLAYERTURN) target = FindObjectOfType<Enemy>().gameObject;
-            else if (state == CombatState.ENEMYTURN) target = FindObjectOfType<Player>().gameObject;
-
-            resultSide.diceEffect.Activate(resultSide.value, target);
+            if (state == CombatState.PLAYERTURN) 
+            {
+                target = FindObjectOfType<Enemy>().gameObject;
+                playerDice.SetActive(false);
+            }
+            else if (state == CombatState.ENEMYTURN) 
+            {
+                target = FindObjectOfType<Player>().gameObject;
+                enemyDice.SetActive(false);
+            }
 
             yield return new WaitForSeconds(0.5f);
 
-            if (state == CombatState.PLAYERTURN) StartCoroutine(HandleEnemyTurn());
-            else if (state == CombatState.ENEMYTURN) SetupStandbyState();
+            resultSide.diceEffect.Activate(resultSide.value, target);
+
+            if (state == CombatState.PLAYERTURN) 
+            {
+                if(enemy.GetComponent<HP>().GetCurrentHP() <= 0)
+                {
+                    enemy.Die();
+                    yield return StartCoroutine(EndCombat());
+                }
+                else
+                {
+                    StartCoroutine(HandleEnemyTurn());
+                }
+            }
+            else if (state == CombatState.ENEMYTURN) 
+            {
+                SetupStandbyState();
+            }
         }
 
         IEnumerator HandleEnemyTurn()
         {
             state = CombatState.ENEMYTURN;
 
-            yield return null;
+            Dice currentEnemyDice = enemy.GetCurrentEnemyDice();
+            yield return StartCoroutine(RollEnemyDice(currentEnemyDice));
+
+            enemy.MoveToNextPattern();
+
+            SetupStandbyState();
+        }
+        
+        IEnumerator RollEnemyDice(Dice diceToRoll)
+        {
+            DiceRoller diceRoller = enemyDice.GetComponent<DiceRoller>();
+            diceRoller.TriggerDiceRoll(diceToRoll);
+
+            while(diceRoller.isRolling)
+            {
+                yield return null;
+            }
+
+            Side resultSide = diceToRoll.sides[diceRoller.resultIndex];
+
+            yield return StartCoroutine(DoAction(resultSide));
         }
     }
 }
