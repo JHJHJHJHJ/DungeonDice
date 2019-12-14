@@ -25,13 +25,14 @@ namespace DungeonDice.Combat
         Player player;
 
         Enemy enemy;
-        GameObject enemyDice;
+        [HideInInspector]
+        public GameObject enemyDice;
 
         public TileEvent winTileEvent;
 
-        private void Awake() 
+        private void Awake()
         {
-            player = FindObjectOfType<Player>();    
+            player = FindObjectOfType<Player>();
         }
 
         public IEnumerator InitializeCombat()
@@ -42,7 +43,7 @@ namespace DungeonDice.Combat
 
             yield return null;
 
-            foreach(Transform child in enemy.transform)
+            foreach (Transform child in enemy.transform)
             {
                 child.gameObject.SetActive(true);
             }
@@ -59,15 +60,21 @@ namespace DungeonDice.Combat
             enemyDice.GetComponent<SpriteRenderer>().sprite = enemy.GetCurrentEnemyDice().repSprite;
         }
 
+        public void SetupPlayerTurnState()
+        {
+            state = CombatState.PLAYERTURN;
+            enemyDice.SetActive(false);
+        }
+
         public IEnumerator DoAction(Side resultSide)
         {
             GameObject target = null;
-            if (state == CombatState.PLAYERTURN) 
+            if (state == CombatState.PLAYERTURN)
             {
                 target = FindObjectOfType<Enemy>().gameObject;
                 playerDice.SetActive(false);
             }
-            else if (state == CombatState.ENEMYTURN) 
+            else if (state == CombatState.ENEMYTURN)
             {
                 target = FindObjectOfType<Player>().gameObject;
                 enemyDice.SetActive(false);
@@ -77,9 +84,9 @@ namespace DungeonDice.Combat
 
             resultSide.diceEffect.Activate(resultSide.value, target);
 
-            if (state == CombatState.PLAYERTURN) 
+            if (state == CombatState.PLAYERTURN)
             {
-                if(enemy.GetComponent<HP>().GetCurrentHP() <= 0)
+                if (enemy.GetComponent<HP>().GetCurrentHP() <= 0)
                 {
                     enemy.Die();
                     yield return StartCoroutine(EndCombat());
@@ -89,7 +96,7 @@ namespace DungeonDice.Combat
                     StartCoroutine(HandleEnemyTurn());
                 }
             }
-            else if (state == CombatState.ENEMYTURN) 
+            else if (state == CombatState.ENEMYTURN)
             {
                 SetupStandbyState();
             }
@@ -106,13 +113,14 @@ namespace DungeonDice.Combat
 
             SetupStandbyState();
         }
-        
+
         IEnumerator RollEnemyDice(Dice diceToRoll)
         {
+            enemyDice.SetActive(true);
             DiceRoller diceRoller = enemyDice.GetComponent<DiceRoller>();
             diceRoller.TriggerDiceRoll(diceToRoll);
 
-            while(diceRoller.isRolling)
+            while (diceRoller.isRolling)
             {
                 yield return null;
             }

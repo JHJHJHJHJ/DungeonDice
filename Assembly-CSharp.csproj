@@ -55,10 +55,14 @@
      <Compile Include="Assets\Scripts\Dices\Dice.cs" />
      <Compile Include="Assets\Scripts\Dices\DiceContainer.cs" />
      <Compile Include="Assets\Scripts\Dices\DiceEffect.cs" />
+     <Compile Include="Assets\Scripts\Dices\DiceEffects\DealDamage.cs" />
+     <Compile Include="Assets\Scripts\Dices\DiceEffects\MovePlayer.cs" />
      <Compile Include="Assets\Scripts\Dices\DiceRoller.cs" />
-     <Compile Include="Assets\Scripts\Dices\Effects\DealDamage.cs" />
-     <Compile Include="Assets\Scripts\Dices\Effects\MovePlayer.cs" />
      <Compile Include="Assets\Scripts\Dices\Side.cs" />
+     <Compile Include="Assets\Scripts\Items\Inventory.cs" />
+     <Compile Include="Assets\Scripts\Items\Item.cs" />
+     <Compile Include="Assets\Scripts\Items\ItemEffect.cs" />
+     <Compile Include="Assets\Scripts\Items\ItemEffects\HealHP.cs" />
      <Compile Include="Assets\Scripts\Phase.cs" />
      <Compile Include="Assets\Scripts\StateHolder.cs" />
      <Compile Include="Assets\Scripts\Stats\FP.cs" />
@@ -77,6 +81,7 @@
      <Compile Include="Assets\Scripts\UI\DungeonInfo.cs" />
      <Compile Include="Assets\Scripts\UI\FPDisplay.cs" />
      <Compile Include="Assets\Scripts\UI\HPDisplay.cs" />
+     <Compile Include="Assets\Scripts\UI\InventoryUI.cs" />
      <Compile Include="Assets\SpriteOutline\Scripts\Extensions\ArrayExt.cs" />
      <Compile Include="Assets\SpriteOutline\Scripts\Extensions\ImageExt.cs" />
      <Compile Include="Assets\SpriteOutline\Scripts\Extensions\LayerMaskExt.cs" />

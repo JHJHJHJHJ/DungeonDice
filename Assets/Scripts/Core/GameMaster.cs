@@ -4,6 +4,8 @@ using UnityEngine;
 using DungeonDice.Tiles;
 using DungeonDice.Characters;
 using DungeonDice.UI;
+using DungeonDice.Stats;
+using UnityEngine.SceneManagement;
 
 namespace DungeonDice.Core
 {
@@ -30,6 +32,14 @@ namespace DungeonDice.Core
 
             stateHolder.SetPhaseToExplore();
             stateHolder.SetFloor(1);
+        }
+
+        private void Update() 
+        {
+            if(player.GetComponent<HP>().GetCurrentHP() == 0)    
+            {
+                GameOver();
+            }
         }
 
         void HandleExplorePhase()
@@ -60,6 +70,11 @@ namespace DungeonDice.Core
         {
             stateHolder.SetPhase(Phase.COMBAT);
             diceUI.SetUIAtPhase(Phase.COMBAT);
+        }
+
+        void GameOver()
+        {
+            SceneManager.LoadScene(0); // GOTO 제대로된 연출 만들기 / 상황 별 실행으로 위치 수정하기
         }
     }
 }

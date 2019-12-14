@@ -250,7 +250,8 @@ namespace DungeonDice.UI
             {
                 diceToRoll = diceContainer.currentCombatDice;
                 currentDiceUIImage = currentCombatDiceImage;
-                FindObjectOfType<CombatManager>().state = CombatState.PLAYERTURN;
+
+                FindObjectOfType<CombatManager>().SetupPlayerTurnState();
             }
             else
             {
