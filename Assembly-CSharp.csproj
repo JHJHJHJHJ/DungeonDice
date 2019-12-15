@@ -67,6 +67,7 @@
      <Compile Include="Assets\Scripts\StateHolder.cs" />
      <Compile Include="Assets\Scripts\Stats\FP.cs" />
      <Compile Include="Assets\Scripts\Stats\HP.cs" />
+     <Compile Include="Assets\Scripts\Tiles\Effects\GetItem.cs" />
      <Compile Include="Assets\Scripts\Tiles\Effects\MoveToNextFloor.cs" />
      <Compile Include="Assets\Scripts\Tiles\Effects\TriggerCombat.cs" />
      <Compile Include="Assets\Scripts\Tiles\Ground.cs" />
