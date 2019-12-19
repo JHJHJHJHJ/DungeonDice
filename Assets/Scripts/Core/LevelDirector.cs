@@ -11,8 +11,6 @@ namespace DungeonDice.Core
         [SerializeField] float timeToFade = 0.5f;
         [SerializeField] float tileTrasparentRate = 0.2f;
         [SerializeField] float yOffset = 0.4f;
-        [SerializeField] float dropHeight = 0.4f;
-        [SerializeField] float dropSpeed = 0.5f;
 
         public IEnumerator SetLevelToEventPhase(Ground groundToInstantiate, TilesContainer tilesContainer, Player player)
         {
@@ -46,17 +44,31 @@ namespace DungeonDice.Core
         IEnumerator FadeInGround(Ground currentTileGround)
         {
             float yPos = currentTileGround.transform.position.y;
-            float time = 0f;
+            float alpha = 0f;
 
-            while (time <= 1f)
+            while (alpha <= 1f)
             {
                 currentTileGround.transform.position = new Vector2(currentTileGround.transform.position.x, yPos);
 
-                time += Time.deltaTime / timeToFade;
+                foreach (Transform child in currentTileGround.transform)
+                {
+                    if (!child.GetComponent<SpriteRenderer>()) continue;
+
+                    child.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, alpha);
+                }
+
+                alpha += Time.deltaTime / timeToFade;
                 yPos += Time.deltaTime * yOffset / timeToFade;
 
                 yield return null;
             }
+
+            foreach (Transform child in currentTileGround.transform)
+                {
+                    if (!child.GetComponent<SpriteRenderer>()) continue;
+
+                    child.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
+                }
         }
 
         IEnumerator FadeOutGroundAndDestroy(Ground groundToDestory)
@@ -138,13 +150,6 @@ namespace DungeonDice.Core
         IEnumerator FadeInPlayer(Player player, Transform posToFadeIn)
         {
             float alpha = 0f;
-
-            foreach (Transform child in player.transform)
-            {
-                if (!child.GetComponent<SpriteRenderer>()) continue;
-
-                child.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, alpha);
-            }
 
             while (alpha <= 1f)
             {

@@ -7,6 +7,8 @@ namespace DungeonDice.Items
     {
         [SerializeField] int maxItemCount = 5;
 
+        int selectedItemIndex;
+
         public List<Item> possessedItems;
 
         private void Start()
@@ -23,10 +25,15 @@ namespace DungeonDice.Items
             }
         }
 
-        public void UseItem(int itemIndex)
+        public void UseSelectedItem()
         {
-            possessedItems[itemIndex].itemEffect.Use();
-            possessedItems.RemoveAt(itemIndex);
+            possessedItems[selectedItemIndex].itemEffect.Use();
+            possessedItems.RemoveAt(selectedItemIndex);
+        }
+
+        public void UpdateSelectedIndex(int i)
+        {
+            selectedItemIndex = i;
         }
     }
 }
