@@ -47,9 +47,7 @@
   <ItemGroup>
      <Compile Include="Assets\Scripts\Characters\Player.cs" />
      <Compile Include="Assets\Scripts\Combat\CombatManager.cs" />
-     <Compile Include="Assets\Scripts\Combat\Enemy.cs" />
      <Compile Include="Assets\Scripts\Core\EventManager.cs" />
-     <Compile Include="Assets\Scripts\Core\EventTextBox.cs" />
      <Compile Include="Assets\Scripts\Core\GameMaster.cs" />
      <Compile Include="Assets\Scripts\Core\LevelDirector.cs" />
      <Compile Include="Assets\Scripts\Dices\Dice.cs" />
@@ -59,18 +57,27 @@
      <Compile Include="Assets\Scripts\Dices\DiceEffects\MovePlayer.cs" />
      <Compile Include="Assets\Scripts\Dices\DiceRoller.cs" />
      <Compile Include="Assets\Scripts\Dices\Side.cs" />
+     <Compile Include="Assets\Scripts\GameState\Phase.cs" />
+     <Compile Include="Assets\Scripts\GameState\StateHolder.cs" />
      <Compile Include="Assets\Scripts\Items\Inventory.cs" />
      <Compile Include="Assets\Scripts\Items\Item.cs" />
+     <Compile Include="Assets\Scripts\Items\ItemDatabase.cs" />
      <Compile Include="Assets\Scripts\Items\ItemEffect.cs" />
+     <Compile Include="Assets\Scripts\Items\ItemEffects\HealFP.cs" />
      <Compile Include="Assets\Scripts\Items\ItemEffects\HealHP.cs" />
-     <Compile Include="Assets\Scripts\Phase.cs" />
-     <Compile Include="Assets\Scripts\StateHolder.cs" />
+     <Compile Include="Assets\Scripts\Objects\Enemy.cs" />
+     <Compile Include="Assets\Scripts\Objects\Treasure.cs" />
      <Compile Include="Assets\Scripts\Stats\FP.cs" />
+     <Compile Include="Assets\Scripts\Stats\Gold.cs" />
      <Compile Include="Assets\Scripts\Stats\HP.cs" />
+     <Compile Include="Assets\Scripts\Tiles\Effects\GetGold.cs" />
      <Compile Include="Assets\Scripts\Tiles\Effects\GetItem.cs" />
      <Compile Include="Assets\Scripts\Tiles\Effects\MoveToNextFloor.cs" />
+     <Compile Include="Assets\Scripts\Tiles\Effects\OpenTreasureBox.cs" />
      <Compile Include="Assets\Scripts\Tiles\Effects\TriggerCombat.cs" />
      <Compile Include="Assets\Scripts\Tiles\Ground.cs" />
+     <Compile Include="Assets\Scripts\Tiles\MoveCondition.cs" />
+     <Compile Include="Assets\Scripts\Tiles\MoveConditions\InventoryIsEmpty.cs" />
      <Compile Include="Assets\Scripts\Tiles\Tile.cs" />
      <Compile Include="Assets\Scripts\Tiles\TileEvent.cs" />
      <Compile Include="Assets\Scripts\Tiles\TileEventEffect.cs" />
@@ -80,7 +87,9 @@
      <Compile Include="Assets\Scripts\Tiles\TileType.cs" />
      <Compile Include="Assets\Scripts\UI\DiceUI.cs" />
      <Compile Include="Assets\Scripts\UI\DungeonInfo.cs" />
+     <Compile Include="Assets\Scripts\UI\EventTextBox.cs" />
      <Compile Include="Assets\Scripts\UI\FPDisplay.cs" />
+     <Compile Include="Assets\Scripts\UI\GoldDisplay.cs" />
      <Compile Include="Assets\Scripts\UI\HPDisplay.cs" />
      <Compile Include="Assets\Scripts\UI\InventoryUI.cs" />
      <Compile Include="Assets\SpriteOutline\Scripts\Extensions\ArrayExt.cs" />
@@ -111,37 +120,37 @@
      <None Include="Assets\Fonts\Korean2350.txt" />
      <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
  <Reference Include="Unity.Timeline.Editor">
- <HintPath>C:/Users/pc/Documents/DungeonDice/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
+ <HintPath>C:/Users/gkdh753/Documents/DungeonDice/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.VSCode.Editor">
- <HintPath>C:/Users/pc/Documents/DungeonDice/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
+ <HintPath>C:/Users/gkdh753/Documents/DungeonDice/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>C:/Users/pc/Documents/DungeonDice/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>C:/Users/gkdh753/Documents/DungeonDice/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.UI">
- <HintPath>C:/Users/pc/Documents/DungeonDice/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
+ <HintPath>C:/Users/gkdh753/Documents/DungeonDice/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Timeline">
- <HintPath>C:/Users/pc/Documents/DungeonDice/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
+ <HintPath>C:/Users/gkdh753/Documents/DungeonDice/Library/ScriptAssemblies/Unity.Timeline.dll</HintPath>
  </Reference>
  <Reference Include="Unity.CollabProxy.Editor">
- <HintPath>C:/Users/pc/Documents/DungeonDice/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
+ <HintPath>C:/Users/gkdh753/Documents/DungeonDice/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.Rider.Editor">
- <HintPath>C:/Users/pc/Documents/DungeonDice/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
+ <HintPath>C:/Users/gkdh753/Documents/DungeonDice/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Sprite.Editor">
- <HintPath>C:/Users/pc/Documents/DungeonDice/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
+ <HintPath>C:/Users/gkdh753/Documents/DungeonDice/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.2D.Tilemap.Editor">
- <HintPath>C:/Users/pc/Documents/DungeonDice/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
+ <HintPath>C:/Users/gkdh753/Documents/DungeonDice/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/Users/pc/Documents/DungeonDice/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>C:/Users/gkdh753/Documents/DungeonDice/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.UI">
- <HintPath>C:/Users/pc/Documents/DungeonDice/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
+ <HintPath>C:/Users/gkdh753/Documents/DungeonDice/Library/ScriptAssemblies/UnityEditor.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine">
  <HintPath>C:/Program Files/Unity/Hub/Editor/2019.2.15f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class StateHolder : MonoBehaviour 
+public class StateHolder : MonoBehaviour
 {
     [SerializeField] Phase currentPhase;
     int floor = 1;
@@ -30,3 +30,4 @@ public class StateHolder : MonoBehaviour
         return floor;
     }
 }
+

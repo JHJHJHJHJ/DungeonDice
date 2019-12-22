@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2183558669143576896}
   - component: {fileID: 2183558669143576927}
   m_Layer: 0
-  m_Name: Healing Portion
-  m_TagString: Untagged
+  m_Name: Food
+  m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -70,12 +70,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: d79a664cca156b74ba3cf0bee2b86586, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e5b866e32e6ceec41bf7219433f7888a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.25, y: 1.3}
+  m_Size: {x: 0.8, y: 0.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -93,6 +93,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b20e114d7081404187a90eaa7becc7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemName: "\uCCB4\uB825 \uD3EC\uC158"
-  description: "\uCCB4\uB825\uC744 5 \uD68C\uBCF5\uD55C\uB2E4."
-  itemEffect: {fileID: 11400000, guid: 3cdb7a9f5310ca04c8e871aebe2cae62, type: 2}
+  itemName: "\uC2DD\uB7C9"
+  description: "\uB9CC\uBCF5\uB3C4\uB97C 10 \uCC44\uC6B4\uB2E4."
+  itemEffect: {fileID: 11400000, guid: 07a11f2de39c748449b320e1e800a23c, type: 2}

@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7569b0e95673554d84b7f401a904447, type: 3}
   m_Name: GetItem
   m_EditorClassIdentifier: 
-  itemToAdd: {fileID: 2183558669143576927, guid: 140a3a507c9da834283e87134333382f,
+  itemToGet: {fileID: 2183558669143576927, guid: 140a3a507c9da834283e87134333382f,
     type: 3}

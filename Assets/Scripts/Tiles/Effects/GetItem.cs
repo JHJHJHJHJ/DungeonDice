@@ -1,16 +1,22 @@
 using UnityEngine;
 using DungeonDice.Items;
+using DungeonDice.Characters;
+using DungeonDice.Objects;
+using DungeonDice.Tiles;
 
 namespace DungeonDice.Tiles
 {
     [CreateAssetMenu(fileName = "GetItem", menuName = "DungeonDice/Tile Event Effect/GetItem")]
     public class GetItem : TileEventEffect
     {
-        [SerializeField] Item itemToAdd;
-
         public override void Activate()
         {
-            FindObjectOfType<Inventory>().AddItem(itemToAdd);
+            Tile currentTile = FindObjectOfType<Player>().currentTile;
+
+            Item itemToGet = currentTile.GetComponent<Treasure>().itemInside;
+            FindObjectOfType<Inventory>().GetItem(itemToGet);
+
+            currentTile.DestroyTileObject();
         }
     }
 }

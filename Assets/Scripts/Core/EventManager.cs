@@ -17,9 +17,7 @@ namespace DungeonDice.Core
         [SerializeField] EventTextBox eventTextBox;
         [SerializeField] float timeToType = 0.05f;
 
-        Queue<string> descriptionQueue;
         string currentDescription;
-        bool isTyping = false;
 
         [SerializeField] TileEvent currentEvent;
         List<TileEvent> nextEvents = new List<TileEvent>();
@@ -37,13 +35,15 @@ namespace DungeonDice.Core
             levelDirector = GetComponent<LevelDirector>();
         }
 
-        private void Start() 
+        private void Start()
         {
             FindObjectOfType<CombatManager>().EndCombat += HandleEndBattle;
         }
 
         IEnumerator HandleEndBattle()
         {
+            player.currentTile.DestroyTileObject();
+
             yield return StartCoroutine(OpenEventTextBox());
 
             MoveToNextEvent(FindObjectOfType<CombatManager>().winTileEvent);
@@ -69,7 +69,7 @@ namespace DungeonDice.Core
             while (eventTextBox.isAnimating)
             {
                 yield return null;
-            }  
+            }
         }
 
         void MoveToNextEvent(TileEvent eventToUpdate)
@@ -87,11 +87,7 @@ namespace DungeonDice.Core
 
             currentEvent = eventToUpdate;
 
-            descriptionQueue = new Queue<string>();
-            foreach (string description in currentEvent.descriptions)
-            {
-                descriptionQueue.Enqueue(description);
-            }
+            eventTextBox.EnqueueDescriptions(currentEvent.descriptions);
 
             nextEvents.Clear();
             for (int i = 0; i < eventToUpdate.nextEvents.Length; i++)
@@ -102,40 +98,22 @@ namespace DungeonDice.Core
 
         void HandleEvent()
         {
-            if(currentEvent.tileEventEffect != null)
+            if (currentEvent.tileEventEffect != null)
             {
                 currentEvent.tileEventEffect.Activate();
             }
 
-            if(currentEvent.descriptions.Length != 0)
-            {
-                UpdateDescription();
-            }
+            StartCoroutine(UpdateDescription());
         }
 
-        void UpdateDescription()
+        IEnumerator UpdateDescription()
         {
-            if (descriptionQueue.Count <= 0) return;
+            if (eventTextBox.descriptionQueue.Count <= 0) yield break;
 
-            currentDescription = descriptionQueue.Dequeue();
-            StartCoroutine(TypeDescription(currentDescription));
-        }
+            currentDescription = eventTextBox.descriptionQueue.Dequeue();
+            yield return StartCoroutine(eventTextBox.TypeDescription(currentDescription));
 
-        IEnumerator TypeDescription(string description)
-        {
-            isTyping = true;
-
-            eventTextBox.descriptionText.text = "";
-
-            foreach (char letter in description.ToCharArray())
-            {
-                eventTextBox.descriptionText.text += letter;
-                yield return new WaitForSeconds(timeToType);
-            }
-
-            isTyping = false;
-
-            if (descriptionQueue.Count == 0)
+            if (eventTextBox.descriptionQueue.Count == 0)
             {
                 SetOptionButtons(currentEvent);
             }
@@ -153,40 +131,46 @@ namespace DungeonDice.Core
 
         public void ClickToSkipOrNext()
         {
-            if (isTyping)
+            if (eventTextBox.isTyping)
             {
                 StopAllCoroutines();
-                isTyping = false;
+                eventTextBox.isTyping = false;
 
                 eventTextBox.descriptionText.text = currentDescription;
-                if (descriptionQueue.Count == 0)
+                if (eventTextBox.descriptionQueue.Count == 0)
                 {
                     SetOptionButtons(currentEvent);
                 }
             }
             else
             {
-                if (descriptionQueue == null) return;
+                if (eventTextBox.descriptionQueue == null) return;
 
-                UpdateDescription();
+                StartCoroutine(UpdateDescription());
             }
         }
 
-        public void GoToNextEvent0()
+        public void GoToNextEvent(int i)
         {
-            if (nextEvents.Count < 1) StartCoroutine(EndEvent());
-            else
+            if (nextEvents.Count < i + 1)
             {
-                MoveToNextEvent(nextEvents[0]);
-            }
-        }
+                if (FindObjectOfType<Ground>().additionalObject)
+                {
+                    FindObjectOfType<Ground>().additionalObject.SetActive(false);
+                }
 
-        public void GoToNextEvent1()
-        {
-            if (nextEvents.Count < 2) StartCoroutine(EndEvent());
+                StartCoroutine(EndEvent());
+            }
             else
             {
-                MoveToNextEvent(nextEvents[1]);
+                if (nextEvents[i].CanMove())
+                {
+                    if (FindObjectOfType<Ground>().additionalObject)
+                    {
+                        FindObjectOfType<Ground>().additionalObject.SetActive(false);
+                    }
+                    MoveToNextEvent(nextEvents[i]);
+                }
             }
         }
 

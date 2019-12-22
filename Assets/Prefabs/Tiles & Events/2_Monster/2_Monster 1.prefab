@@ -472,7 +472,7 @@ GameObject:
   - component: {fileID: 2669011238675717012}
   - component: {fileID: 8764806154616920315}
   - component: {fileID: 3559972750629540407}
-  - component: {fileID: 4893067472522676959}
+  - component: {fileID: 8275187540147733754}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -558,7 +558,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialHP: 5
---- !u!114 &4893067472522676959
+--- !u!114 &8275187540147733754
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -567,7 +567,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5581472111568416315}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 947d7c79191db1449a456eb15f3e240f, type: 3}
+  m_Script: {fileID: 11500000, guid: 919ab8db7e983e84e823fb8d2c448ffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dice: {fileID: 1812589321}
@@ -575,7 +575,8 @@ MonoBehaviour:
   - diceIndexes: 00000000
   enemyDices:
   - {fileID: 8095486095599290455, guid: 2bb9497d29cd6df4398b8e2974a265dc, type: 3}
-  - {fileID: 270175754606342114, guid: 03aca4eb6b94daa4198398eacaf1f672, type: 3}
+  minGold: 5
+  maxGold: 10
 --- !u!1001 &1200458227053798375
 PrefabInstance:
   m_ObjectHideFlags: 0

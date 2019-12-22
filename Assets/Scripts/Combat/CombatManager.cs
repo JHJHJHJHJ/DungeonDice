@@ -5,6 +5,7 @@ using DungeonDice.Dices;
 using DungeonDice.Characters;
 using DungeonDice.Stats;
 using DungeonDice.Tiles;
+using DungeonDice.Objects;
 
 namespace DungeonDice.Combat
 {

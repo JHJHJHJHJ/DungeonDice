@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ea5bd5729ac8343960d5cc78c9cfe0, type: 3}
   m_Name: 1_stair_0
   m_EditorClassIdentifier: 
+  moveCondition: {fileID: 0}
   tileEventEffect: {fileID: 11400000, guid: 48dce55303958804d98ca656a89164e3, type: 2}
-  descriptions:
-  - "\uB2E4\uC74C \uCE35\uC73C\uB85C \uB0B4\uB824\uAC14\uB2E4."
+  descriptions: []
   nextEvents: []
   optionLabel:
   - "\uB098\uC544\uAC04\uB2E4."

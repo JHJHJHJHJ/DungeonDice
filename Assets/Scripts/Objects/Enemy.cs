@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using DungeonDice.Dices;
 
-namespace DungeonDice.Combat
+namespace DungeonDice.Objects
 {
     public class Enemy : MonoBehaviour
     {
@@ -12,6 +12,9 @@ namespace DungeonDice.Combat
         int currentOrder = 0;
 
         [SerializeField] Dice[] enemyDices;
+
+        public int minGold;
+        public int maxGold;
 
         private void Start() 
         {
@@ -38,7 +41,11 @@ namespace DungeonDice.Combat
 
         public void Die()
         {
-            Destroy(gameObject);
+            GetComponent<SpriteRenderer>().sprite = null;
+            foreach(Transform child in transform)
+            {
+                Destroy(child.gameObject);
+            }
         }
     }
 

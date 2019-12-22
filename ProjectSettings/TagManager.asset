@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Dice
   - Tile
+  - TileObject
+  - Item
   layers:
   - Default
   - TransparentFX

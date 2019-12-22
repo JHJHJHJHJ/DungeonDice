@@ -1,4 +1,5 @@
 using UnityEngine;
+using DungeonDice.UI;
 using DungeonDice.Characters;
 
 namespace DungeonDice.Tiles
@@ -9,11 +10,15 @@ namespace DungeonDice.Tiles
         public override void Activate()
         {
             StateHolder stateHolder = FindObjectOfType<StateHolder>();
-            stateHolder.SetFloor(stateHolder.GetCurrentFloor() + 1);
-            FindObjectOfType<TilesContainer>().GenerateLevel(stateHolder.GetCurrentFloor());
-
             TilesContainer tilesContainer = FindObjectOfType<TilesContainer>();
             Player player = FindObjectOfType<Player>();
+
+            stateHolder.SetFloor(stateHolder.GetCurrentFloor() + 1);
+            tilesContainer.GenerateLevel(stateHolder.GetCurrentFloor());
+
+            string[] description = new string[1];
+            description[0] = GetDescription(stateHolder);
+            FindObjectOfType<EventTextBox>().EnqueueDescriptions(description);
 
             for (int i = 0; i < tilesContainer.currentTileList.Count; i++)
             {
@@ -28,6 +33,12 @@ namespace DungeonDice.Tiles
             }
 
             player.UpdateCurrentTile();
+        }
+
+        string GetDescription(StateHolder stateHolder)
+        {
+            string description = stateHolder.GetCurrentFloor().ToString() + "층에 도착했다!";
+            return description;
         }
     }
 }

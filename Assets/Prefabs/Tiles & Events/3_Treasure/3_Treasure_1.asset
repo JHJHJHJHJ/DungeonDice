@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3ea5bd5729ac8343960d5cc78c9cfe0, type: 3}
+  m_Name: 3_Treasure_1
+  m_EditorClassIdentifier: 
+  moveCondition: {fileID: 0}
+  tileEventEffect: {fileID: 11400000, guid: 057395f40ef98ea4c985ca7182e46761, type: 2}
+  descriptions: []
+  nextEvents:
+  - {fileID: 11400000, guid: 4c46ca23b0da4664d925f1ecb6c756c5, type: 2}
+  optionLabel:
+  - "\uAC00\uC838\uAC04\uB2E4."
+  - "\uC9C0\uB098\uAC04\uB2E4."

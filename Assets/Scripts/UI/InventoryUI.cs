@@ -8,62 +8,45 @@ namespace DungeonDice.UI
 {
     public class InventoryUI : MonoBehaviour
     {
-        [SerializeField] GameObject inventoryObj;
-        [SerializeField] Image[] itemImages;
+        [SerializeField] GameObject detailWindow;
         [SerializeField] TextMeshProUGUI itemNameText;
         [SerializeField] TextMeshProUGUI itemDescriptionText;
 
         Inventory inventory;
+
+        int selectIndex;
 
         private void Awake()
         {
             inventory = FindObjectOfType<Inventory>();
         }
 
-        public void OpenInventory()
-        {
-            inventoryObj.SetActive(true);
-            UpdateItemImages();
-        }
-
-        void UpdateItemImages()
-        {
-            foreach (Image itemImage in itemImages)
-            {
-                itemImage.gameObject.SetActive(false);
-            }
-
-            List<Item> possessedItems = inventory.possessedItems;
-
-            for (int i = 0; i < possessedItems.Count; i++)
-            {
-                itemImages[i].gameObject.SetActive(true);
-                itemImages[i].sprite = possessedItems[i].GetComponent<SpriteRenderer>().sprite;
-            }
-
-            itemNameText.text = "";
-            itemDescriptionText.text = "";
-        }
-
         public void SelectItem(int i)
         {
-            Item selectedItem = inventory.possessedItems[i];
+            if(inventory.myItems[i] == null) return;
 
-            inventory.UpdateSelectedIndex(i);
-
-            itemNameText.text = selectedItem.itemName;
-            itemDescriptionText.text = selectedItem.description;
+            selectIndex = i;
+            
+            detailWindow.SetActive(true);
+            UpdateDescription(i);
         }
 
-        public void CloseInventory()
+        void UpdateDescription(int i)
         {
-            inventoryObj.SetActive(false);
+            itemNameText.text = inventory.myItems[i].itemName;
+            itemDescriptionText.text = inventory.myItems[i].description;
         }
 
-        public void UseItem()
+        public void UseSelectedItem()
         {
-            inventory.UseSelectedItem();
-            UpdateItemImages();
+            inventory.UseItem(selectIndex);
+
+            ShutDetailWindow();
+        }
+
+        public void ShutDetailWindow()
+        {
+            detailWindow.SetActive(false);
         }
     }
 }

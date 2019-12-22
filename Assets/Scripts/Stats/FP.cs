@@ -17,7 +17,7 @@ namespace DungeonDice.Stats
 
         public void DealFP(float deal)
         {
-            if (currentFP == 0)
+            if (deal < 0 && currentFP == 0)
             {
                 GetComponent<HP>().DealHP(-1f);
             }
