@@ -72,6 +72,7 @@
      <Compile Include="Assets\Scripts\Stats\HP.cs" />
      <Compile Include="Assets\Scripts\Tiles\Effects\GetGold.cs" />
      <Compile Include="Assets\Scripts\Tiles\Effects\GetItem.cs" />
+     <Compile Include="Assets\Scripts\Tiles\Effects\MeetMonster.cs" />
      <Compile Include="Assets\Scripts\Tiles\Effects\MoveToNextFloor.cs" />
      <Compile Include="Assets\Scripts\Tiles\Effects\OpenTreasureBox.cs" />
      <Compile Include="Assets\Scripts\Tiles\Effects\TriggerCombat.cs" />

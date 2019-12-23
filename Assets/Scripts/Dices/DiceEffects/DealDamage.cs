@@ -10,5 +10,10 @@ namespace DungeonDice.Dices
         {
             target.GetComponent<HP>().DealHP(-value);
         }
+
+        public override string GetCombatMessage(string target, int value)
+        {
+            return target + "에게 " + value.ToString() + "의 데미지!";
+        }
     }
 }

@@ -15,7 +15,6 @@ namespace DungeonDice.Core
         [SerializeField] TextMeshProUGUI tileName;
         [SerializeField] Button[] buttons;
         [SerializeField] EventTextBox eventTextBox;
-        [SerializeField] float timeToType = 0.05f;
 
         string currentDescription;
 
@@ -38,6 +37,14 @@ namespace DungeonDice.Core
         private void Start()
         {
             FindObjectOfType<CombatManager>().EndCombat += HandleEndBattle;
+        }
+
+        private void Update()
+        {
+            if(buttons[0].gameObject.activeSelf)
+            {
+                UpdateOptionButtons(currentEvent);
+            }            
         }
 
         IEnumerator HandleEndBattle()
@@ -115,17 +122,36 @@ namespace DungeonDice.Core
 
             if (eventTextBox.descriptionQueue.Count == 0)
             {
-                SetOptionButtons(currentEvent);
+                ShowOptionButtons();
             }
         }
 
-        void SetOptionButtons(TileEvent eventToUpdate)
+        void ShowOptionButtons()
+        {
+            for (int i = 0; i < currentEvent.optionLabel.Length; i++)
+            {
+                buttons[i].gameObject.SetActive(true);
+                UpdateOptionButtons(currentEvent);
+            }
+        }
+
+        void UpdateOptionButtons(TileEvent eventToUpdate)
         {
             for (int i = 0; i < eventToUpdate.optionLabel.Length; i++)
             {
-                buttons[i].gameObject.SetActive(true);
                 Text optionButtonLabel = buttons[i].transform.GetComponentInChildren<Text>();
                 optionButtonLabel.text = eventToUpdate.optionLabel[i];
+
+                buttons[i].GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+                optionButtonLabel.color = new Color(1f, 1f, 1f, 1f);
+
+                if(i >= eventToUpdate.nextEvents.Length) return;
+
+                if(!eventToUpdate.nextEvents[i].CanMove())
+                {
+                    buttons[i].GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1f);
+                    optionButtonLabel.color = new Color(0.5f, 0.5f, 0.5f, 1f);
+                }
             }
         }
 
@@ -139,7 +165,7 @@ namespace DungeonDice.Core
                 eventTextBox.descriptionText.text = currentDescription;
                 if (eventTextBox.descriptionQueue.Count == 0)
                 {
-                    SetOptionButtons(currentEvent);
+                    ShowOptionButtons();
                 }
             }
             else

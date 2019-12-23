@@ -6,12 +6,14 @@ namespace DungeonDice.Objects
 {
     public class Enemy : MonoBehaviour
     {
+        public string enemyName;
+
         public DiceRoller dice;
 
         [SerializeField] DicePattern[] dicePatterns;
         int currentOrder = 0;
 
-        [SerializeField] Dice[] enemyDices;
+        [SerializeField] EnemyDice[] enemyDices;
 
         public int minGold;
         public int maxGold;
@@ -23,7 +25,12 @@ namespace DungeonDice.Objects
 
         public Dice GetCurrentEnemyDice()
         {
-            return enemyDices[GetCurrentDiceIndex()];
+            return enemyDices[GetCurrentDiceIndex()].dice;
+        }
+
+        public string GetCurrentDiceDescription()
+        {
+            return enemyName + enemyDices[GetCurrentDiceIndex()].description;
         }
 
         int GetCurrentDiceIndex()
@@ -38,20 +45,18 @@ namespace DungeonDice.Objects
         {
             currentOrder = (currentOrder + 1) % dicePatterns.Length;
         }
-
-        public void Die()
-        {
-            GetComponent<SpriteRenderer>().sprite = null;
-            foreach(Transform child in transform)
-            {
-                Destroy(child.gameObject);
-            }
-        }
     }
 
     [System.Serializable]
     public class DicePattern
     {
         public int[] diceIndexes;
+    }
+
+    [System.Serializable]
+    public class EnemyDice
+    {
+        public Dice dice;
+        [TextArea] public string description;
     }
 }

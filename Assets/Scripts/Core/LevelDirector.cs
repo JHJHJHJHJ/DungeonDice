@@ -64,11 +64,11 @@ namespace DungeonDice.Core
             }
 
             foreach (Transform child in currentTileGround.transform)
-                {
-                    if (!child.GetComponent<SpriteRenderer>()) continue;
+            {
+                if (!child.GetComponent<SpriteRenderer>()) continue;
 
-                    child.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
-                }
+                child.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 1f);
+            }
         }
 
         IEnumerator FadeOutGroundAndDestroy(Ground groundToDestory)

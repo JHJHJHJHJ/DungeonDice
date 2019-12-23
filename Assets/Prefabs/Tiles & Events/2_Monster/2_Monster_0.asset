@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ea5bd5729ac8343960d5cc78c9cfe0, type: 3}
   m_Name: 2_Monster_0
   m_EditorClassIdentifier: 
-  tileEventEffect: {fileID: 0}
-  descriptions:
-  - "\uBAAC\uC2A4\uD130\uC640 \uB9C8\uC8FC\uCCE4\uB2E4!"
+  moveCondition: {fileID: 0}
+  tileEventEffect: {fileID: 11400000, guid: 8cb85f5fdcfa13649b1d9ec68f0b5def, type: 2}
+  descriptions: []
   nextEvents:
   - {fileID: 11400000, guid: 773c94234402d3840a685a01d55d01ac, type: 2}
   optionLabel:

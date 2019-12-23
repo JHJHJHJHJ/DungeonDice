@@ -8,8 +8,7 @@ namespace DungeonDice.Dices
         public Sprite sideSprite;
         public int value;
         public string sideName;
-        [TextArea]
-        public string description;
+        [TextArea] public string description;
         public DiceEffect diceEffect;
     }
 }

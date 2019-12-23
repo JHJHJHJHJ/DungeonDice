@@ -570,11 +570,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 919ab8db7e983e84e823fb8d2c448ffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyName: "\uC2AC\uB77C\uC784"
   dice: {fileID: 1812589321}
   dicePatterns:
   - diceIndexes: 00000000
   enemyDices:
-  - {fileID: 8095486095599290455, guid: 2bb9497d29cd6df4398b8e2974a265dc, type: 3}
+  - dice: {fileID: 8095486095599290455, guid: 2bb9497d29cd6df4398b8e2974a265dc, type: 3}
+    description: "\uC740(\uB294) \uACF5\uACA9\uD560 \uAE30\uD68C\uB97C \n\uC5FF\uBCF4\uACE0
+      \uC788\uB2E4."
   minGold: 5
   maxGold: 10
 --- !u!1001 &1200458227053798375
@@ -584,6 +587,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 591848012947379098, guid: f151253db6d60094d9d4c6bd9837b8d5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.11
+      objectReference: {fileID: 0}
+    - target: {fileID: 5387116748972052346, guid: f151253db6d60094d9d4c6bd9837b8d5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.94
+      objectReference: {fileID: 0}
     - target: {fileID: 5387116749772457380, guid: f151253db6d60094d9d4c6bd9837b8d5,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -643,6 +656,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 2_Monster 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5387116749934101633, guid: f151253db6d60094d9d4c6bd9837b8d5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 5387116749981347437, guid: f151253db6d60094d9d4c6bd9837b8d5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 5387116749993834256, guid: f151253db6d60094d9d4c6bd9837b8d5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 5387116750584443417, guid: f151253db6d60094d9d4c6bd9837b8d5,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f151253db6d60094d9d4c6bd9837b8d5, type: 3}

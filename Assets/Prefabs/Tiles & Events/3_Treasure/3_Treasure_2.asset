@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveCondition: {fileID: 11400000, guid: a6adc777b810fdd4f82a53601cd2a2ef, type: 2}
   tileEventEffect: {fileID: 11400000, guid: 429fe6c6c860ea847b3ef51c924b1a98, type: 2}
-  descriptions:
-  - "\uC544\uC774\uD15C\uC744 \uD68D\uB4DD\uD588\uB2E4!"
+  descriptions: []
   nextEvents: []
   optionLabel:
   - "\uC9C0\uB098\uAC04\uB2E4."
