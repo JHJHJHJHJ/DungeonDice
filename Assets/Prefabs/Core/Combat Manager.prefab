@@ -10,6 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7932702149780832399}
   - component: {fileID: 7932702149780832392}
+  - component: {fileID: 709377389}
+  - component: {fileID: 709377390}
   m_Layer: 0
   m_Name: Combat Manager
   m_TagString: Untagged
@@ -44,5 +46,32 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   state: 0
+  combatMessage: {fileID: 0}
+  timeToWait: 0.7
   playerDice: {fileID: 0}
-  winTileEvent: {fileID: 0}
+  enemyDice: {fileID: 0}
+  winTileEvent: {fileID: 11400000, guid: df733e01f1c970346915ae37c947ea6b, type: 2}
+--- !u!114 &709377389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7932702149780832398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f42648ebf91e3542aa68b45915bda87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &709377390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7932702149780832398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b7f670d51832ad43b8f59b21c6e9400, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

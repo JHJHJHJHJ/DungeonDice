@@ -6,6 +6,7 @@ using DungeonDice.Characters;
 using DungeonDice.Combat;
 using System.Collections;
 using DungeonDice.Stats;
+using DungeonDice.Objects;
 
 namespace DungeonDice.UI
 {
@@ -30,8 +31,11 @@ namespace DungeonDice.UI
         [SerializeField] TextMeshProUGUI combatNameText;
         [SerializeField] TextMeshProUGUI combatDescriptionText;
 
-        bool exploreWindowIsOpen = false;
-        bool combatWindowIsOpen = false;
+        [Header("Enemy Dice Detail Window")]
+        [SerializeField] GameObject enemyDiceDetailWindow;
+        [SerializeField] Image[] enemyDiceDetailWindowSides;
+        [SerializeField] TextMeshProUGUI enemyNameText;
+        [SerializeField] TextMeshProUGUI enemyDescriptionText;
 
         int exploreDiceIndex = 0;
         int combatDiceIndex = 0;
@@ -54,29 +58,9 @@ namespace DungeonDice.UI
             currentCombatDiceImage.sprite = diceContainer.currentCombatDice.repSprite;
         }
 
-        public void ChangeExploreDiceToLeft()
-        {
-            if(!CanClick()) return;
-
-            if (exploreDiceIndex <= 0)
-            {
-                exploreDiceIndex = diceContainer.exploreDices.Count - 1;
-            }
-            else
-            {
-                exploreDiceIndex--;
-            }
-
-            diceContainer.currentExploreDice = diceContainer.exploreDices[exploreDiceIndex];
-
-            UpdateDiceImages();
-            UpdateSideImages();
-            UpdateSideInfo(0);
-        }
-
         public void ChangeExploreDiceToRight()
         {
-            if(!CanClick()) return;
+            if (!CanClick()) return;
 
             if (exploreDiceIndex >= diceContainer.exploreDices.Count - 1)
             {
@@ -90,13 +74,13 @@ namespace DungeonDice.UI
             diceContainer.currentExploreDice = diceContainer.exploreDices[exploreDiceIndex];
 
             UpdateDiceImages();
-            UpdateSideImages();
+            UpdateSideImages(exploreDiceDetailWindowSides, diceContainer.currentExploreDice);
             UpdateSideInfo(0);
         }
 
         public void ChangeCombatDiceToLeft()
         {
-            if(!CanClick()) return;
+            if (!CanClick()) return;
 
             if (combatDiceIndex <= 0)
             {
@@ -110,135 +94,121 @@ namespace DungeonDice.UI
             diceContainer.currentCombatDice = diceContainer.combatDices[combatDiceIndex];
 
             UpdateDiceImages();
-            UpdateSideImages();
-            UpdateSideInfo(0);
-        }
-
-        public void ChangeCombatDiceToRight()
-        {
-            if(!CanClick()) return;
-
-            if (combatDiceIndex >= diceContainer.combatDices.Count - 1)
-            {
-                combatDiceIndex = 0;
-            }
-            else
-            {
-                combatDiceIndex++;
-            }
-
-            diceContainer.currentCombatDice = diceContainer.combatDices[combatDiceIndex];
-
-            UpdateDiceImages();
-            UpdateSideImages();
+            UpdateSideImages(combatDiceDetailWindowSides, diceContainer.currentCombatDice);
             UpdateSideInfo(0);
         }
 
         public void ToggleExploreDiceDetailWindow()
         {
-            if(!CanClick()) return;
+            if (!CanClick()) return;
 
             combatDiceDetailWindow.SetActive(false);
-            combatWindowIsOpen = false;
+            enemyDiceDetailWindow.SetActive(false);
 
-            if (exploreWindowIsOpen)
+            if (exploreDiceDetailWindow.activeSelf)
             {
                 exploreDiceDetailWindow.SetActive(false);
-                exploreWindowIsOpen = false;
             }
             else
             {
                 exploreDiceDetailWindow.SetActive(true);
-                exploreWindowIsOpen = true;
 
-                UpdateSideImages();
+                UpdateSideImages(exploreDiceDetailWindowSides, diceContainer.currentExploreDice);
                 UpdateSideInfo(0);
             }
         }
 
         public void ToggleCombatDiceDetailWindow()
         {
-            if(!CanClick()) return;
+            if (!CanClick()) return;
 
             exploreDiceDetailWindow.SetActive(false);
-            exploreWindowIsOpen = false;
+            enemyDiceDetailWindow.SetActive(false);
 
-            if (combatWindowIsOpen)
+            if (combatDiceDetailWindow.activeSelf)
             {
                 combatDiceDetailWindow.SetActive(false);
-                combatWindowIsOpen = false;
             }
             else
             {
                 combatDiceDetailWindow.SetActive(true);
-                combatWindowIsOpen = true;
 
-                UpdateSideImages();
+                UpdateSideImages(combatDiceDetailWindowSides, diceContainer.currentCombatDice);
                 UpdateSideInfo(0);
             }
         }
 
-        void UpdateSideImages()
+        public void OpenEnemyDiceDetailWindow()
         {
-            if (exploreWindowIsOpen)
+            if (!CanClick()) return;
+
+            exploreDiceDetailWindow.SetActive(false);
+            combatDiceDetailWindow.SetActive(false);
+
+            enemyDiceDetailWindow.SetActive(true);
+
+            Dice enemyDice = FindObjectOfType<Enemy>().GetCurrentEnemyDice();
+
+            UpdateSideImages(enemyDiceDetailWindowSides, enemyDice);
+            UpdateSideInfo(0);
+        }
+
+        public void ShutEnemyDiceDetailWindow()
+        {
+
+            enemyDiceDetailWindow.SetActive(false);
+
+        }
+
+        void UpdateSideImages(Image[] windowSideImages, Dice diceToUpdate)
+        {
+            foreach (Image image in windowSideImages)
             {
-                foreach (Image image in exploreDiceDetailWindowSides)
-                {
-                    image.gameObject.SetActive(false);
-                }
-
-                Side[] currentDiceSides = diceContainer.currentExploreDice.sides;
-
-                for (int i = 0; i < currentDiceSides.Length; i++)
-                {
-                    exploreDiceDetailWindowSides[i].gameObject.SetActive(true);
-                    exploreDiceDetailWindowSides[i].sprite = currentDiceSides[i].sideSprite;
-                }
+                image.gameObject.SetActive(false);
             }
 
-            if (combatWindowIsOpen)
+            Side[] currentDiceSides = diceToUpdate.sides;
+
+            for (int i = 0; i < currentDiceSides.Length; i++)
             {
-                foreach (Image image in combatDiceDetailWindowSides)
-                {
-                    image.gameObject.SetActive(false);
-                }
-
-                Side[] currentDiceSides = diceContainer.currentCombatDice.sides;
-
-                for (int i = 0; i < currentDiceSides.Length; i++)
-                {
-                    combatDiceDetailWindowSides[i].gameObject.SetActive(true);
-                    combatDiceDetailWindowSides[i].sprite = currentDiceSides[i].sideSprite;
-                }
+                windowSideImages[i].gameObject.SetActive(true);
+                windowSideImages[i].sprite = currentDiceSides[i].sideSprite;
             }
         }
 
         public void UpdateSideInfo(int i)
         {
-            if (exploreWindowIsOpen)
-            {
-                Side[] currentDiceSides = diceContainer.currentExploreDice.sides;
+            Side[] currentDiceSides = null;
+            TextMeshProUGUI nameText = null;
+            TextMeshProUGUI descriptionText = null;
 
-                exploreNameText.text = currentDiceSides[i].sideName + " " + currentDiceSides[i].value;
-                exploreDescriptionText.text = currentDiceSides[i].description;
+            currentDiceSides = diceContainer.currentExploreDice.sides;
+            nameText = exploreNameText;
+            descriptionText = exploreDescriptionText;
+
+            if (combatDiceDetailWindow.activeSelf)
+            {
+                currentDiceSides = diceContainer.currentCombatDice.sides;
+                nameText = combatNameText;
+                descriptionText = combatDescriptionText;
+            }
+            else if (enemyDiceDetailWindow.activeSelf)
+            {
+                Dice enemyDice = FindObjectOfType<Enemy>().GetCurrentEnemyDice();
+                currentDiceSides = enemyDice.sides;
+                nameText = enemyNameText;
+                descriptionText = enemyDescriptionText;
             }
 
-            if (combatWindowIsOpen)
-            {
-                Side[] currentDiceSides = diceContainer.currentCombatDice.sides;
-
-                combatNameText.text = currentDiceSides[i].sideName + " " + currentDiceSides[i].value;
-                combatDescriptionText.text = currentDiceSides[i].description;
-            }
+            nameText.text = currentDiceSides[i].sideName + " " + currentDiceSides[i].value;
+            descriptionText.text = currentDiceSides[i].description;
         }
 
         public void ShutWindows()
         {
             exploreDiceDetailWindow.SetActive(false);
             combatDiceDetailWindow.SetActive(false);
-
-            exploreWindowIsOpen = false;
-            combatWindowIsOpen = false;
+            enemyDiceDetailWindow.SetActive(false);
         }
 
         public void RollCurrentDice(string diceType) // 굴린다 버튼. explore : combat
@@ -274,7 +244,7 @@ namespace DungeonDice.UI
             DiceRoller diceRoller = playerDice.GetComponent<DiceRoller>();
             diceRoller.TriggerDiceRoll(diceToRoll);
 
-            while(diceRoller.isRolling)
+            while (diceRoller.isRolling)
             {
                 yield return null;
             }
@@ -307,7 +277,7 @@ namespace DungeonDice.UI
             {
                 exploreRollButton.SetActive(true);
             }
-            else if(phase == Phase.COMBAT)
+            else if (phase == Phase.COMBAT)
             {
                 combatRollButton.SetActive(true);
             }
@@ -315,9 +285,9 @@ namespace DungeonDice.UI
 
         bool CanClick()
         {
-            if(FindObjectOfType<StateHolder>().GetCurrentPhase() == Phase.COMBAT)
+            if (FindObjectOfType<StateHolder>().GetCurrentPhase() == Phase.COMBAT)
             {
-                if(FindObjectOfType<CombatManager>().state != CombatState.STANDBY)
+                if (FindObjectOfType<CombatManager>().state != CombatState.STANDBY)
                 {
                     return false;
                 }

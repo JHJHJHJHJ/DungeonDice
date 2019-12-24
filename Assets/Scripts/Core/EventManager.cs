@@ -49,6 +49,8 @@ namespace DungeonDice.Core
 
         IEnumerator HandleEndBattle()
         {
+            player.GetComponent<CombatHUD>().hudCanvas.SetActive(false);
+
             player.currentTile.DestroyTileObject();
 
             yield return StartCoroutine(OpenEventTextBox());

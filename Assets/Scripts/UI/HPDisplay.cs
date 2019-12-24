@@ -11,6 +11,11 @@ namespace DungeonDice.UI
         [SerializeField] TextMeshProUGUI hpText;
         [SerializeField] HP hp;
 
+        private void Start() 
+        {
+            UpdateText();
+        }
+
         private void Update()
         {
             UpdateBar();

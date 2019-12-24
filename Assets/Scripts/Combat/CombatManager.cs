@@ -34,9 +34,14 @@ namespace DungeonDice.Combat
 
         public TileEvent winTileEvent;
 
+        CombatTurn turn;
+        HUDController hudController;
+
         private void Awake()
         {
             player = FindObjectOfType<Player>();
+            turn = GetComponent<CombatTurn>();
+            hudController = GetComponent<HUDController>();
         }
 
         public IEnumerator InitializeCombat()
@@ -44,27 +49,27 @@ namespace DungeonDice.Combat
             state = CombatState.START;
 
             enemy = FindObjectOfType<Enemy>();
+            enemyDice = enemy.dice.gameObject;
+
+            player.GetComponent<CombatHUD>().hudCanvas.SetActive(true);
+            enemy.GetComponent<CombatHUD>().hudCanvas.SetActive(true);
 
             yield return null;
 
-            foreach (Transform child in enemy.transform)
-            {
-                child.gameObject.SetActive(true);
-            }
-            enemyDice = enemy.dice.gameObject;
-
-            SetupStandbyState();
+            StartCoroutine(SetupStandbyState());
         }
 
-        void SetupStandbyState()
+        IEnumerator SetupStandbyState()
         {
+            yield return StartCoroutine(turn.HandleTurnEvents(player.gameObject));
+
             state = CombatState.STANDBY;
             FindObjectOfType<StateHolder>().SetPhaseToCombat();
 
             enemyDice.gameObject.SetActive(true);
             enemyDice.GetComponent<SpriteRenderer>().sprite = enemy.GetCurrentEnemyDice().repSprite;
 
-            combatMessage.text = enemy.GetCurrentDiceDescription(); 
+            combatMessage.text = enemy.GetCurrentDiceDescription();
         }
 
         public void SetupPlayerTurnState()
@@ -83,21 +88,12 @@ namespace DungeonDice.Combat
 
             GameObject target = null;
             string targetName = "";
-            if (state == CombatState.PLAYERTURN)
-            {
-                target = FindObjectOfType<Enemy>().gameObject;
-                targetName = enemy.enemyName;
-                playerDice.SetActive(false);
-            }
-            else if (state == CombatState.ENEMYTURN)
-            {
-                target = FindObjectOfType<Player>().gameObject;
-                targetName = "당신";
-                enemyDice.SetActive(false);
-            }
+            SetDiceTarget(out target, out targetName, resultSide);
 
             resultSide.diceEffect.Activate(resultSide.value, target);
             combatMessage.text = resultSide.diceEffect.GetCombatMessage(targetName, resultSide.value);
+
+            hudController.UpdateHUDs(target); // 아마 실행 방법 연출 애니메이션 들어가면 수정해야할 듯
 
             yield return new WaitForSeconds(timeToWait);
 
@@ -105,16 +101,7 @@ namespace DungeonDice.Combat
             {
                 if (enemy.GetComponent<HP>().GetCurrentHP() <= 0)
                 {
-                    yield return StartCoroutine(KillEnemy());
-                    
-                    yield return new WaitForSeconds(timeToWait);
-
-                    combatMessage.text = "";
-
-                    yield return new WaitForSeconds(timeToWait);
-
-                    yield return StartCoroutine(EndCombat());
-                    
+                    StartCoroutine(WinCombat());
                 }
                 else
                 {
@@ -127,9 +114,24 @@ namespace DungeonDice.Combat
             }
         }
 
+        IEnumerator WinCombat()
+        {
+            yield return StartCoroutine(KillEnemy());
+
+            yield return new WaitForSeconds(timeToWait);
+
+            combatMessage.text = "";
+
+            yield return new WaitForSeconds(0.3f);
+
+            yield return StartCoroutine(EndCombat());
+        }
+
         IEnumerator HandleEnemyTurn()
         {
             state = CombatState.ENEMYTURN;
+
+            yield return StartCoroutine(turn.HandleTurnEvents(enemy.gameObject));
 
             combatMessage.text = enemy.enemyName + "은(는) 주사위를 던졌다!";
 
@@ -138,7 +140,7 @@ namespace DungeonDice.Combat
 
             enemy.MoveToNextPattern();
 
-            SetupStandbyState();
+            StartCoroutine(SetupStandbyState());
         }
 
         IEnumerator RollEnemyDice(Dice diceToRoll)
@@ -159,11 +161,13 @@ namespace DungeonDice.Combat
 
         IEnumerator KillEnemy()
         {
-            foreach(Transform child in enemy.transform)
+            foreach (Transform child in enemy.transform)
             {
                 Destroy(child.gameObject);
             }
-            combatMessage.text = enemy.enemyName + "을(를) 쓰려뜨렸다!";
+
+            combatMessage.text = enemy.enemyName + "을(를) 물리쳤다!";
+
             yield return FadeOutEnemy();
         }
 
@@ -180,6 +184,43 @@ namespace DungeonDice.Combat
                 yield return null;
             }
             enemy.GetComponent<SpriteRenderer>().sprite = null;
+        }
+
+        void SetDiceTarget(out GameObject target, out string targetName, Side resultSide)
+        {
+            target = null;
+            targetName = "";
+
+            if (state == CombatState.PLAYERTURN)
+            {        
+                playerDice.SetActive(false);
+
+                if (resultSide.diceEffect.isSelf())
+                {
+                    target = player.gameObject;
+                    targetName = "당신";
+                }
+                else
+                {
+                    target = enemy.gameObject;
+                    targetName = enemy.enemyName;
+                }
+            }
+            else if (state == CombatState.ENEMYTURN)
+            {
+                enemyDice.SetActive(false);
+
+                if (resultSide.diceEffect.isSelf())
+                {
+                    target = enemy.gameObject;
+                    targetName = enemy.enemyName;
+                }
+                else
+                {
+                    target = player.gameObject;
+                    targetName = "당신";
+                }
+            }
         }
     }
 }

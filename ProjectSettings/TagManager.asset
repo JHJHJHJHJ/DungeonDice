@@ -8,6 +8,7 @@ TagManager:
   - Tile
   - TileObject
   - Item
+  - EnemyDice
   layers:
   - Default
   - TransparentFX
@@ -47,6 +48,9 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 3972571663
+    locked: 0
+  - name: WhiteSpace
+    uniqueID: 932851283
     locked: 0
   - name: Dice
     uniqueID: 834651769

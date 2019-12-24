@@ -12,12 +12,17 @@ namespace DungeonDice.Core
         [SerializeField] float tileTrasparentRate = 0.2f;
         [SerializeField] float yOffset = 0.4f;
 
+        float previousPlayerLocalScaleX = 1f;
+
         public IEnumerator SetLevelToEventPhase(Ground groundToInstantiate, TilesContainer tilesContainer, Player player)
         {
             StartCoroutine(FadeOutPlayer(player, player.transform));
             yield return StartCoroutine(FadeOutTiles(tilesContainer, player));
 
             yield return new WaitForSeconds(0.2f);
+
+            previousPlayerLocalScaleX = player.transform.localScale.x;
+            player.transform.localScale = new Vector2(1f, 1f);
 
             Ground currentTileGround = Instantiate(groundToInstantiate, transform.position, Quaternion.identity);
             StartCoroutine(FadeInGround(currentTileGround));
@@ -32,6 +37,8 @@ namespace DungeonDice.Core
             yield return StartCoroutine(FadeOutGroundAndDestroy(groundToDestroy));
 
             yield return new WaitForSeconds(0.2f);
+
+            player.transform.localScale = new Vector2(previousPlayerLocalScaleX, 1f);
 
             StartCoroutine(FadeInTiles(tilesContainer, player));
             StartCoroutine(FadeOutGroundAndDestroy(groundToDestroy));

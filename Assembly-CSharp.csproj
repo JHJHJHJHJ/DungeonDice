@@ -46,7 +46,10 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Characters\Player.cs" />
+     <Compile Include="Assets\Scripts\Combat\CombatHUD.cs" />
      <Compile Include="Assets\Scripts\Combat\CombatManager.cs" />
+     <Compile Include="Assets\Scripts\Combat\CombatTurn.cs" />
+     <Compile Include="Assets\Scripts\Combat\HUDController.cs" />
      <Compile Include="Assets\Scripts\Core\EventManager.cs" />
      <Compile Include="Assets\Scripts\Core\GameMaster.cs" />
      <Compile Include="Assets\Scripts\Core\LevelDirector.cs" />
@@ -54,11 +57,13 @@
      <Compile Include="Assets\Scripts\Dices\DiceContainer.cs" />
      <Compile Include="Assets\Scripts\Dices\DiceEffect.cs" />
      <Compile Include="Assets\Scripts\Dices\DiceEffects\DealDamage.cs" />
+     <Compile Include="Assets\Scripts\Dices\DiceEffects\GenerateShield.cs" />
      <Compile Include="Assets\Scripts\Dices\DiceEffects\MovePlayer.cs" />
      <Compile Include="Assets\Scripts\Dices\DiceRoller.cs" />
      <Compile Include="Assets\Scripts\Dices\Side.cs" />
      <Compile Include="Assets\Scripts\GameState\Phase.cs" />
      <Compile Include="Assets\Scripts\GameState\StateHolder.cs" />
+     <Compile Include="Assets\Scripts\InputRaycast\InputRaycast.cs" />
      <Compile Include="Assets\Scripts\Items\Inventory.cs" />
      <Compile Include="Assets\Scripts\Items\Item.cs" />
      <Compile Include="Assets\Scripts\Items\ItemDatabase.cs" />
@@ -70,6 +75,7 @@
      <Compile Include="Assets\Scripts\Stats\FP.cs" />
      <Compile Include="Assets\Scripts\Stats\Gold.cs" />
      <Compile Include="Assets\Scripts\Stats\HP.cs" />
+     <Compile Include="Assets\Scripts\Stats\Shield.cs" />
      <Compile Include="Assets\Scripts\Tiles\Effects\GetGold.cs" />
      <Compile Include="Assets\Scripts\Tiles\Effects\GetItem.cs" />
      <Compile Include="Assets\Scripts\Tiles\Effects\MeetMonster.cs" />

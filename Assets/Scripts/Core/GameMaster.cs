@@ -20,7 +20,7 @@ namespace DungeonDice.Core
         {
             player = FindObjectOfType<Player>();
             tilesContainer = FindObjectOfType<TilesContainer>();
-            stateHolder = GetComponent<StateHolder>();
+            stateHolder = FindObjectOfType<StateHolder>();
             diceUI = FindObjectOfType<DiceUI>();
         }
 

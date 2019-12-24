@@ -11,6 +11,11 @@ namespace DungeonDice.Dices
             Player player = FindObjectOfType<Player>();
             player.StartCoroutine(player.Move(value));
         }
+
+        public override bool isSelf()
+        {
+            return false;
+        }
         
         public override string GetCombatMessage(string target, int value)
         {
