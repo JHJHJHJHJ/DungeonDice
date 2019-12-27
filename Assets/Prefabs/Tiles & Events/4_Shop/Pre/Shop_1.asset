@@ -12,13 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ea5bd5729ac8343960d5cc78c9cfe0, type: 3}
   m_Name: Shop_1
   m_EditorClassIdentifier: 
-  moveCondition: {fileID: 0}
+  moveConditions:
+  - {fileID: 11400000, guid: f103ebf691025474998fe42942ce746d, type: 2}
   tileEventEffect: {fileID: 11400000, guid: 575ad6d790cc7454c96a1e02f2a5049f, type: 2}
   descriptions: []
-  nextEvents: []
-  optionLabel: []
   options:
   - label: 
     nextEvent: {fileID: 0}
   - label: "\uC9C0\uB098\uCE5C\uB2E4."
-    nextEvent: {fileID: 0}
+    nextEvent: {fileID: 11400000, guid: ea5fb9ecaf73abe4d8ed5cbdf800ec9a, type: 2}

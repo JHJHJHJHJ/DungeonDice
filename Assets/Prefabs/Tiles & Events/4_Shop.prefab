@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemDatabase: {fileID: 11400000, guid: 4a465c43c59ff034782cdc0391bf1826, type: 2}
+  itemList: []
+  currentIndex: 0
 --- !u!1 &6257801187188225677
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,6 +144,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6644416309744558712, guid: aac0c0cb6e0c05b43bd6b380a9e62aa6,
         type: 3}
+    - target: {fileID: 3352228441126411406, guid: 3e27a632d3791354daa32018560977b3,
+        type: 3}
+      propertyPath: initialTileEvent0
+      value: 
+      objectReference: {fileID: 11400000, guid: a0df0f642864d8a4cbcf151691d0ce0f,
+        type: 2}
+    - target: {fileID: 3352228441126411406, guid: 3e27a632d3791354daa32018560977b3,
+        type: 3}
+      propertyPath: initialTileEvent1
+      value: 
+      objectReference: {fileID: 11400000, guid: 7ec7bfaeb56323f43a9b3bb23eb45501,
+        type: 2}
     - target: {fileID: 3352228441126411407, guid: 3e27a632d3791354daa32018560977b3,
         type: 3}
       propertyPath: m_LocalPosition.x

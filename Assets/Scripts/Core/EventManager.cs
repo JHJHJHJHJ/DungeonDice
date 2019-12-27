@@ -66,7 +66,14 @@ namespace DungeonDice.Core
 
             yield return StartCoroutine(OpenEventTextBox());
 
-            MoveToNextEvent(tileToInitialize.tileInfo.initialTileEvent);
+            if(!tileToInitialize.isChanged)
+            {
+                MoveToNextEvent(tileToInitialize.initialTileEvent0);
+            }
+            else
+            {
+                MoveToNextEvent(tileToInitialize.initialTileEvent1);
+            }         
         }
 
         IEnumerator OpenEventTextBox()

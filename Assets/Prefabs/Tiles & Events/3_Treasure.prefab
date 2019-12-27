@@ -143,6 +143,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3894194468831577802, guid: 93cd8b676a2988b4194697acff57f035,
         type: 3}
+    - target: {fileID: 3352228441126411406, guid: 3e27a632d3791354daa32018560977b3,
+        type: 3}
+      propertyPath: initialTileEvent0
+      value: 
+      objectReference: {fileID: 11400000, guid: dce361b67c566db4bbabbbf7b51a3f8a,
+        type: 2}
     - target: {fileID: 3352228441126411407, guid: 3e27a632d3791354daa32018560977b3,
         type: 3}
       propertyPath: m_LocalPosition.x

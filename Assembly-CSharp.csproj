@@ -93,6 +93,7 @@
      <Compile Include="Assets\Scripts\Tiles\MoveCondition.cs" />
      <Compile Include="Assets\Scripts\Tiles\MoveConditions\CanSpendGoldInShop.cs" />
      <Compile Include="Assets\Scripts\Tiles\MoveConditions\InventoryIsEmpty.cs" />
+     <Compile Include="Assets\Scripts\Tiles\MoveConditions\ShopIsNotEmpty.cs" />
      <Compile Include="Assets\Scripts\Tiles\Tile.cs" />
      <Compile Include="Assets\Scripts\Tiles\TileEvent.cs" />
      <Compile Include="Assets\Scripts\Tiles\TileEventEffect.cs" />

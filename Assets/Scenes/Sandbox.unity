@@ -1397,6 +1397,11 @@ PrefabInstance:
       propertyPath: hudCanvas
       value: 
       objectReference: {fileID: 3180272052874958646}
+    - target: {fileID: 528906202798855761, guid: f35f0e54662082c4da2c568a45de0202,
+        type: 3}
+      propertyPath: initialGold
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 2559257721852585735, guid: f35f0e54662082c4da2c568a45de0202,
         type: 3}
       propertyPath: m_LocalPosition.x

@@ -8,9 +8,16 @@ namespace DungeonDice.Tiles
     {
         public TileInfo tileInfo;
 
-        Transform tileObject = null;
+        [Header("Tile State")]
         public bool isHidden = false;
         public float spriteColor = 1f;
+
+        [Header("Tile Event")]
+        public TileEvent initialTileEvent0;
+        public bool isChanged = false;
+        public TileEvent initialTileEvent1;
+
+        Transform tileObject = null;
 
         public void SetUpTile()
         {
@@ -66,7 +73,12 @@ namespace DungeonDice.Tiles
         public void DestroyTileObject()
         {
             Destroy(tileObject.gameObject);
-            tileInfo.initialTileEvent = null;
+            initialTileEvent0 = null;
+        }
+
+        public void Change()
+        {
+            isChanged = true;
         }
     }
 
@@ -79,7 +91,6 @@ namespace DungeonDice.Tiles
         public Ground ground;
         [TextArea]
         public string description;
-        public TileEvent initialTileEvent;
     }
 }
 

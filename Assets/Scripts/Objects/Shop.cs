@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using DungeonDice.Items;
-using DungeonDice.Tiles;
+using DungeonDice.Characters;
 using DungeonDice.Stats;
 
 namespace DungeonDice.Objects
@@ -57,7 +57,21 @@ namespace DungeonDice.Objects
             FindObjectOfType<Gold>().SpendGold(currentItem.price);
 
             itemList[currentIndex] = null;
-            FindObjectOfType<Ground>().shopItemObjects[currentIndex].SetActive(false);        
+            FindObjectOfType<Ground>().shopItemObjects[currentIndex].SetActive(false);
+
+            if(isEmpty())
+            {
+                FindObjectOfType<Player>().currentTile.Change();
+            }
+        }
+
+        public bool isEmpty()
+        {
+            for(int i = 0; i < itemList.Count; i++)
+            {
+                if(itemList[i] != null) return false;
+            }
+            return true;
         }
     }
 }
