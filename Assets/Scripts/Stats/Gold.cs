@@ -30,6 +30,12 @@ namespace DungeonDice.Stats
             return canSpend;
         }
 
+        public bool CanSpend(int price)
+        {
+            if(currentGold < price) return false;
+            return true;
+        }
+
         public int GetCurrentGold()
         {
             return currentGold;

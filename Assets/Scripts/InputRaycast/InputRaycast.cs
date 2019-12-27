@@ -1,6 +1,8 @@
 using UnityEngine;
 using DungeonDice.UI;
 using DungeonDice.Objects;
+using DungeonDice.Core;
+using DungeonDice.Characters;
 
 public class InputRaycast : MonoBehaviour
 {
@@ -19,7 +21,7 @@ public class InputRaycast : MonoBehaviour
         GetTouch();
     }
 
-    void GetMouseClick()
+    void GetMouseClick() // 디버깅을 위함
     {
         if (Input.GetMouseButtonUp(0))
         {
@@ -30,6 +32,13 @@ public class InputRaycast : MonoBehaviour
                 if (hit.collider.CompareTag("EnemyDice"))
                 {
                     ToggleEnemyDiceWindow();
+                }
+
+                if (hit.collider.CompareTag("ShopObject"))
+                {
+                    if(!FindObjectOfType<Player>().isShopping) return;
+                    
+                    FindObjectOfType<ShopManager>().SelectThisItem(hit.collider.gameObject);
                 }
             }
         }
@@ -48,6 +57,11 @@ public class InputRaycast : MonoBehaviour
                     if (hit.collider.CompareTag("EnemyDice"))
                     {
                         ToggleEnemyDiceWindow();
+                    }
+
+                    if (hit.collider.CompareTag("ShopObject"))
+                    {
+                        FindObjectOfType<ShopManager>().SelectThisItem(hit.collider.gameObject);
                     }
                 }
             }

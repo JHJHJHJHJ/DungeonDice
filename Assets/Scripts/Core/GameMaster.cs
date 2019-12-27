@@ -56,6 +56,8 @@ namespace DungeonDice.Core
 
             Tile currentTile = tilesContainer.currentTileList[player.currentTileIndex].GetComponent<Tile>();
 
+            currentTile.Open();
+
             if (currentTile.tileInfo.initialTileEvent != null)
             {
                 StartCoroutine(GetComponent<EventManager>().InitializeTileEvent(currentTile));

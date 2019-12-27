@@ -12,21 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74d78abacb1441b44888b3a2fcc37cd2, type: 3}
   m_Name: TileProgression
   m_EditorClassIdentifier: 
-  progressionScale: 020000000300000004000000
+  progressionScale: 020000000300000064000000
   tileCounts:
   - stairCount: 1
     monsterCount: 2
     treasureCount: 3
-    etcCount: 0
+    etcCount: 1
   - stairCount: 1
     monsterCount: 3
     treasureCount: 2
-    etcCount: 0
+    etcCount: 1
   - stairCount: 1
     monsterCount: 3
     treasureCount: 1
-    etcCount: 0
+    etcCount: 1
   - stairCount: 1
     monsterCount: 4
     treasureCount: 1
-    etcCount: 0
+    etcCount: 1

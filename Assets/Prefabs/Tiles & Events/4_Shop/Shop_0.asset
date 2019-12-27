@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3ea5bd5729ac8343960d5cc78c9cfe0, type: 3}
+  m_Name: Shop_0
+  m_EditorClassIdentifier: 
+  moveCondition: {fileID: 0}
+  tileEventEffect: {fileID: 0}
+  descriptions:
+  - "\uB358\uC804 \uD55C \uAC00\uC6B4\uB370 \uC790\uB9AC\uB97C \uD3B8 \uD589\uC0C1\uC778\uC774
+    \uD65C\uAE30\uCC2C \uBAA9\uC18C\uB9AC\uB85C \uB2F9\uC2E0\uC744 \uBD88\uB7EC\uC138\uC6B4\uB2E4."
+  - "\uD589\uC0C1\uC778\n\u300C \uB358\uC804 \uD0D0\uD5D8 \uD544\uC218\uD488! \uD55C
+    \uBC88 \uB458\uB7EC\uBCF4\uACE0 \uAC00\uC138\uC694! \u300D"
+  nextEvents: []
+  optionLabel: []
+  options:
+  - label: "\uB458\uB7EC\uBCF8\uB2E4."
+    nextEvent: {fileID: 11400000, guid: fd3714b3177f3e74da48a802a6d852c2, type: 2}
+  - label: "\uC9C0\uB098\uCE5C\uB2E4."
+    nextEvent: {fileID: 0}

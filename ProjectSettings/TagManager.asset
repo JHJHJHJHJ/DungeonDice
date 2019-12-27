@@ -7,8 +7,9 @@ TagManager:
   - Dice
   - Tile
   - TileObject
-  - Item
   - EnemyDice
+  - Shield
+  - ShopObject
   layers:
   - Default
   - TransparentFX
@@ -51,6 +52,9 @@ TagManager:
     locked: 0
   - name: WhiteSpace
     uniqueID: 932851283
+    locked: 0
+  - name: ShopItem
+    uniqueID: 2703220263
     locked: 0
   - name: Dice
     uniqueID: 834651769

@@ -13,13 +13,12 @@ namespace DungeonDice.Core
     public class EventManager : MonoBehaviour
     {
         [SerializeField] TextMeshProUGUI tileName;
-        [SerializeField] Button[] buttons;
+        [SerializeField] EventButtons eventButtons;
         [SerializeField] EventTextBox eventTextBox;
 
         string currentDescription;
 
-        [SerializeField] TileEvent currentEvent;
-        List<TileEvent> nextEvents = new List<TileEvent>();
+        TileEvent currentEvent;
 
         public bool isActivating = false;
 
@@ -41,7 +40,7 @@ namespace DungeonDice.Core
 
         private void Update()
         {
-            if(buttons[0].gameObject.activeSelf)
+            if(eventButtons.buttons[0].gameObject.activeSelf)
             {
                 UpdateOptionButtons(currentEvent);
             }            
@@ -81,28 +80,24 @@ namespace DungeonDice.Core
             }
         }
 
-        void MoveToNextEvent(TileEvent eventToUpdate)
+        public void MoveToNextEvent(TileEvent eventToUpdate)
         {
+            StopAllCoroutines();
+
             UpdateEvent(eventToUpdate);
             HandleEvent();
         }
 
         void UpdateEvent(TileEvent eventToUpdate)
         {
-            for (int i = 0; i < buttons.Length; i++)
+            for (int i = 0; i < eventButtons.buttons.Length; i++)
             {
-                buttons[i].gameObject.SetActive(false);
+                eventButtons.buttons[i].gameObject.SetActive(false);
             }
 
             currentEvent = eventToUpdate;
 
             eventTextBox.EnqueueDescriptions(currentEvent.descriptions);
-
-            nextEvents.Clear();
-            for (int i = 0; i < eventToUpdate.nextEvents.Length; i++)
-            {
-                nextEvents.Add(eventToUpdate.nextEvents[i]);
-            }
         }
 
         void HandleEvent()
@@ -128,30 +123,35 @@ namespace DungeonDice.Core
             }
         }
 
-        void ShowOptionButtons()
+        public void ShowOptionButtons()
         {
-            for (int i = 0; i < currentEvent.optionLabel.Length; i++)
+            for (int i = 0; i < currentEvent.options.Length; i++)
             {
-                buttons[i].gameObject.SetActive(true);
+                if(currentEvent.options[i].label == "")
+                {
+                    continue;
+                }
+
+                eventButtons.buttons[i].gameObject.SetActive(true);
                 UpdateOptionButtons(currentEvent);
             }
         }
 
-        void UpdateOptionButtons(TileEvent eventToUpdate)
+        public void UpdateOptionButtons(TileEvent eventToUpdate)
         {
-            for (int i = 0; i < eventToUpdate.optionLabel.Length; i++)
+            for (int i = 0; i < eventToUpdate.options.Length; i++)
             {
-                Text optionButtonLabel = buttons[i].transform.GetComponentInChildren<Text>();
-                optionButtonLabel.text = eventToUpdate.optionLabel[i];
+                Text optionButtonLabel = eventButtons.buttons[i].transform.GetComponentInChildren<Text>();
+                optionButtonLabel.text = eventToUpdate.options[i].label;
 
-                buttons[i].GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+                eventButtons.buttons[i].GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
                 optionButtonLabel.color = new Color(1f, 1f, 1f, 1f);
 
-                if(i >= eventToUpdate.nextEvents.Length) return;
+                if (eventToUpdate.options[i].nextEvent == null) continue;
 
-                if(!eventToUpdate.nextEvents[i].CanMove())
+                if (!eventToUpdate.options[i].nextEvent.CanMove())
                 {
-                    buttons[i].GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1f);
+                    eventButtons.buttons[i].GetComponent<Image>().color = new Color(0.5f, 0.5f, 0.5f, 1f);
                     optionButtonLabel.color = new Color(0.5f, 0.5f, 0.5f, 1f);
                 }
             }
@@ -180,7 +180,7 @@ namespace DungeonDice.Core
 
         public void GoToNextEvent(int i)
         {
-            if (nextEvents.Count < i + 1)
+            if (currentEvent.options[i].nextEvent == null)
             {
                 if (FindObjectOfType<Ground>().additionalObject)
                 {
@@ -191,13 +191,13 @@ namespace DungeonDice.Core
             }
             else
             {
-                if (nextEvents[i].CanMove())
+                if (currentEvent.options[i].nextEvent.CanMove())
                 {
                     if (FindObjectOfType<Ground>().additionalObject)
                     {
                         FindObjectOfType<Ground>().additionalObject.SetActive(false);
                     }
-                    MoveToNextEvent(nextEvents[i]);
+                    MoveToNextEvent(currentEvent.options[i].nextEvent);
                 }
             }
         }
@@ -206,7 +206,7 @@ namespace DungeonDice.Core
         {
             isActivating = false;
 
-            foreach (Button button in buttons)
+            foreach (Button button in eventButtons.buttons)
             {
                 button.gameObject.SetActive(false);
             }

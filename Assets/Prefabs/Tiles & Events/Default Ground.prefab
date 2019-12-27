@@ -374,7 +374,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4815ab780b57f2045bc57566607485ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tileType: 0
   playerPostion: {fileID: 6763153335060207843}
+  groundObject: {fileID: 0}
+  additionalObject: {fileID: 0}
+  shopItemObjects: []
 --- !u!212 &1886124467550470549
 SpriteRenderer:
   m_ObjectHideFlags: 0

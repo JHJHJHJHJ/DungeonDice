@@ -16,5 +16,7 @@ MonoBehaviour:
   tileEventEffect: {fileID: 11400000, guid: 9ff9f4b7dfeb6834a9bb88a4095954a5, type: 2}
   descriptions: []
   nextEvents: []
-  optionLabel:
-  - "\uB098\uC544\uAC04\uB2E4."
+  optionLabel: []
+  options:
+  - label: "\uB098\uC544\uAC04\uB2E4."
+    nextEvent: {fileID: 0}

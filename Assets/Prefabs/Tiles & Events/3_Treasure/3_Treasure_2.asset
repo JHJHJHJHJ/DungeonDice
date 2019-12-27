@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ea5bd5729ac8343960d5cc78c9cfe0, type: 3}
   m_Name: 3_Treasure_2
   m_EditorClassIdentifier: 
-  moveCondition: {fileID: 11400000, guid: a6adc777b810fdd4f82a53601cd2a2ef, type: 2}
+  moveConditions:
+  - {fileID: 11400000, guid: a6adc777b810fdd4f82a53601cd2a2ef, type: 2}
   tileEventEffect: {fileID: 11400000, guid: 429fe6c6c860ea847b3ef51c924b1a98, type: 2}
   descriptions: []
-  nextEvents: []
-  optionLabel:
-  - "\uC9C0\uB098\uAC04\uB2E4."
+  options:
+  - label: "\uC9C0\uB098\uAC04\uB2E4."
+    nextEvent: {fileID: 0}

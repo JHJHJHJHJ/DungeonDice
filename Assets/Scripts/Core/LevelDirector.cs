@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using DungeonDice.Tiles;
 using DungeonDice.Characters;
+using DungeonDice.Objects;
 using TMPro;
 
 namespace DungeonDice.Core
@@ -25,6 +26,7 @@ namespace DungeonDice.Core
             player.transform.localScale = new Vector2(1f, 1f);
 
             Ground currentTileGround = Instantiate(groundToInstantiate, transform.position, Quaternion.identity);
+            InstantiateObjects(player);
             StartCoroutine(FadeInGround(currentTileGround));
             yield return StartCoroutine(FadeInPlayer(player, currentTileGround.playerPostion));
 
@@ -116,11 +118,13 @@ namespace DungeonDice.Core
                 {
                     if (i == player.currentTileIndex) continue;
 
+                    Tile currentTile = tilesContainer.currentTileList[i]; // 임시로 색깔 바꾸기로 만듦.
+
                     foreach (Transform child in tilesContainer.currentTileList[i].transform)
                     {
                         if (!child.GetComponent<SpriteRenderer>()) continue;
 
-                        child.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, alpha);
+                        child.GetComponent<SpriteRenderer>().color = new Color(currentTile.spriteColor, currentTile.spriteColor, currentTile.spriteColor, alpha);
                     }
                 }
 
@@ -140,11 +144,13 @@ namespace DungeonDice.Core
                 {
                     if (i == player.currentTileIndex) continue;
 
+                    Tile currentTile = tilesContainer.currentTileList[i]; // 임시로 색깔 바꾸기로 만듦.
+
                     foreach (Transform child in tilesContainer.currentTileList[i].transform)
                     {
                         if (!child.GetComponent<SpriteRenderer>()) continue;
 
-                        child.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, alpha);
+                        child.GetComponent<SpriteRenderer>().color = new Color(currentTile.spriteColor, currentTile.spriteColor, currentTile.spriteColor, alpha);
                     }
                 }
 
@@ -203,6 +209,14 @@ namespace DungeonDice.Core
                 if (!child.GetComponent<SpriteRenderer>()) continue;
 
                 child.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, alpha);
+            }
+        }
+
+        void InstantiateObjects(Player player)
+        {
+            if(player.currentTile.GetComponent<Shop>())
+            {
+                player.currentTile.GetComponent<Shop>().UpdateShopItemSprites();
             }
         }
     }

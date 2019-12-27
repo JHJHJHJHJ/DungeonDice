@@ -15,6 +15,8 @@ namespace DungeonDice.Characters
         public int currentTileIndex = 0;
         public Tile currentTile;
 
+        public bool isShopping = false;
+
         Rigidbody2D myRigidbody;
         Animator animator;
         HP hp;
@@ -40,26 +42,18 @@ namespace DungeonDice.Characters
             currentTile = tilesContainer.currentTileList[currentTileIndex];
         }
 
-        public IEnumerator Move(int steps)
+        public IEnumerator Move(int steps, bool isToward)
         {
             isMoving = true;
             animator.SetBool("isMoving", true);
 
             while (steps > 0)
             {
-                int nextTileIndex;
-                if (currentTileIndex == tilesContainer.currentTileList.Count - 1)
-                {
-                    nextTileIndex = 0;
-                }
-                else
-                {
-                    nextTileIndex = currentTileIndex + 1;
-                }
+                int nextTileIndex = GetNextIndex(isToward);
 
                 Transform targetTile = tilesContainer.currentTileList[nextTileIndex].transform;
 
-                FlipSprite(transform, targetTile);
+                FlipSprite(transform, targetTile, isToward);
 
                 while (MoveToNextTile(targetTile)) { yield return null; }
 
@@ -80,14 +74,43 @@ namespace DungeonDice.Characters
         {
             Vector3 targetPos = new Vector3(targetTile.position.x, targetTile.position.y, targetTile.position.z);
 
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);     
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
 
             return targetPos != transform.position;
         }
 
-        void FlipSprite(Transform currentTile, Transform targetTile)
+        void FlipSprite(Transform currentTile, Transform targetTile, bool isToward)
         {
-            transform.localScale = new Vector2(Mathf.Sign(targetTile.position.x - currentTile.position.x), 1f);
+            float localScaleX = targetTile.position.x - currentTile.position.x;
+            if(!isToward) localScaleX *= -1f;
+
+            transform.localScale = new Vector2(Mathf.Sign(localScaleX), 1f);
+        }
+
+        int GetNextIndex(bool isToward)
+        {
+            if (isToward)
+            {
+                if (currentTileIndex == tilesContainer.currentTileList.Count - 1)
+                {
+                    return 0;
+                }
+                else
+                {
+                    return currentTileIndex + 1;
+                }
+            }
+            else
+            {
+                if (currentTileIndex == 0)
+                {
+                    return tilesContainer.currentTileList.Count - 1;
+                }
+                else
+                {
+                    return currentTileIndex - 1;
+                }
+            }
         }
     }
 }

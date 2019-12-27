@@ -12,10 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3ea5bd5729ac8343960d5cc78c9cfe0, type: 3}
   m_Name: 1_stair
   m_EditorClassIdentifier: 
+  moveCondition: {fileID: 0}
+  tileEventEffect: {fileID: 0}
   descriptions:
   - "\uB2E4\uC74C \uCE35\uC73C\uB85C \uB0B4\uB824\uAC00\uB294 \uACC4\uB2E8\uC744 \uBC1C\uACAC\uD588\uB2E4!"
-  nextEvents:
-  - {fileID: 11400000, guid: a3a86c229e5d9224db9e3727969c3bda, type: 2}
-  optionLabel:
-  - "\uB0B4\uB824\uAC04\uB2E4."
-  - "\uC9C0\uB098\uCE5C\uB2E4."
+  nextEvents: []
+  optionLabel: []
+  options:
+  - label: "\uB0B4\uB824\uAC04\uB2E4."
+    nextEvent: {fileID: 11400000, guid: a3a86c229e5d9224db9e3727969c3bda, type: 2}
+  - label: "\uC9C0\uB098\uCE5C\uB2E4."
+    nextEvent: {fileID: 0}

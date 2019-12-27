@@ -15,8 +15,10 @@ MonoBehaviour:
   moveCondition: {fileID: 0}
   tileEventEffect: {fileID: 11400000, guid: 057395f40ef98ea4c985ca7182e46761, type: 2}
   descriptions: []
-  nextEvents:
-  - {fileID: 11400000, guid: 4c46ca23b0da4664d925f1ecb6c756c5, type: 2}
-  optionLabel:
-  - "\uAC00\uC838\uAC04\uB2E4."
-  - "\uC9C0\uB098\uAC04\uB2E4."
+  nextEvents: []
+  optionLabel: []
+  options:
+  - label: "\uAC00\uC838\uAC04\uB2E4."
+    nextEvent: {fileID: 11400000, guid: 4c46ca23b0da4664d925f1ecb6c756c5, type: 2}
+  - label: "\uC9C0\uB098\uCE5C\uB2E4."
+    nextEvent: {fileID: 0}

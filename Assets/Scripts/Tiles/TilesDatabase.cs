@@ -9,6 +9,7 @@ namespace DungeonDice.Tiles
         public Tile[] stairTiles;
         public Tile[] monsterTiles;
         public Tile[] treasureTiles;
+        public Tile[] etcTiles;
     }
 }
 

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3ea5bd5729ac8343960d5cc78c9cfe0, type: 3}
+  m_Name: BuyItem
+  m_EditorClassIdentifier: 
+  moveConditions:
+  - {fileID: 11400000, guid: 02c4f4fb6ebe47440b1872854c9c0ea9, type: 2}
+  - {fileID: 11400000, guid: 47de8392ad967104a87010096da5cd69, type: 2}
+  tileEventEffect: {fileID: 11400000, guid: 75930b2513b3a2b42912b8ebcdc89bc2, type: 2}
+  descriptions: []
+  options:
+  - label: "\uB354 \uB458\uB7EC\uBCF8\uB2E4."
+    nextEvent: {fileID: 11400000, guid: fd3714b3177f3e74da48a802a6d852c2, type: 2}
+  - label: "\uC9C0\uB098\uCE5C\uB2E4."
+    nextEvent: {fileID: 0}

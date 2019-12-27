@@ -16,8 +16,10 @@ MonoBehaviour:
   tileEventEffect: {fileID: 0}
   descriptions:
   - "\uBCF4\uBB3C\uC0C1\uC790\uB97C \uBC1C\uACAC\uD588\uB2E4!"
-  nextEvents:
-  - {fileID: 11400000, guid: fa90ee9cac12565489d283901a0d2736, type: 2}
-  optionLabel:
-  - "\uC5F4\uC5B4\uBCF8\uB2E4."
-  - "\uBB34\uC2DC\uD558\uACE0 \uC9C0\uB098\uAC04\uB2E4."
+  nextEvents: []
+  optionLabel: []
+  options:
+  - label: "\uC5F4\uC5B4\uBCF8\uB2E4."
+    nextEvent: {fileID: 11400000, guid: fa90ee9cac12565489d283901a0d2736, type: 2}
+  - label: "\uBB34\uC2DC\uD558\uACE0 \uC9C0\uB098\uAC04\uB2E4."
+    nextEvent: {fileID: 0}

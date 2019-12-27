@@ -31,11 +31,14 @@ namespace DungeonDice.Tiles
 
             List<Tile> newTileList = MakeNewTileList(floorToGenerate);
 
-            for (int i = 0; i < spawnPositions.Length; i++)
+            for (int i = 0; i < spawnPositions.Length; i++) // spawn Tiles
             {
                 Tile newTile = Instantiate(newTileList[i], spawnPositions[i].transform.position, Quaternion.identity, transform);
                 currentTileList.Add(newTile);
+                newTile.SetUpTile();
             }
+            
+            HideTiles();
         }
 
         private List<Tile> MakeNewTileList(int floorToGenerate)
@@ -55,6 +58,11 @@ namespace DungeonDice.Tiles
             for (int i = 0; i < tileProgression.GetTreasureCount(floorToGenerate); i++)
             {
                 Tile tileToAdd = tilesDatabase.treasureTiles[Random.Range(0, tilesDatabase.treasureTiles.Length)];
+                newTileList.Add(tileToAdd);
+            }
+            for (int i = 0; i < tileProgression.GetetcCount(floorToGenerate); i++)
+            {
+                Tile tileToAdd = tilesDatabase.etcTiles[Random.Range(0, tilesDatabase.etcTiles.Length)];
                 newTileList.Add(tileToAdd);
             }
 
@@ -92,6 +100,21 @@ namespace DungeonDice.Tiles
                 Tile temp = list[k];
                 list[k] = list[n];
                 list[n] = temp;
+            }
+        }
+
+        void HideTiles()
+        {
+            for(int i = 0; i < 2; i++)
+            {
+                int index = Random.Range(0, currentTileList.Count);
+
+                while (index == FindObjectOfType<Player>().currentTileIndex)
+                {
+                    index = Random.Range(0, currentTileList.Count);
+                }
+
+                currentTileList[index].Hide();
             }
         }
     }

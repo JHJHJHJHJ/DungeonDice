@@ -58,11 +58,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileName: {fileID: 0}
-  buttons:
-  - {fileID: 0}
-  - {fileID: 0}
+  eventButtons: {fileID: 0}
   eventTextBox: {fileID: 0}
-  currentEvent: {fileID: 0}
   isActivating: 0
 --- !u!114 &1205680494887003511
 MonoBehaviour:

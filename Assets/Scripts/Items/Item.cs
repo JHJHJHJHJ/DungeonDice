@@ -8,6 +8,7 @@ namespace DungeonDice.Items
         [TextArea]
         public string description;
         public ItemEffect itemEffect;
+        public int price;
     }
 }
 

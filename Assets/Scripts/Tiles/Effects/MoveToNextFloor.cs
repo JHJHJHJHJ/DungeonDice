@@ -24,11 +24,14 @@ namespace DungeonDice.Tiles
             {
                 if (i == player.currentTileIndex) continue;
 
+                Tile currentTile = tilesContainer.currentTileList[i];
+
                 foreach (Transform child in tilesContainer.currentTileList[i].transform)
                 {
                     if (!child.GetComponent<SpriteRenderer>()) continue;
 
-                    child.GetComponent<SpriteRenderer>().color = new Color(1f, 1f, 1f, 0.15f);
+                    float tileColor = currentTile.spriteColor;
+                    child.GetComponent<SpriteRenderer>().color = new Color(tileColor, tileColor, tileColor, 0.15f);
                 }
             }
 
