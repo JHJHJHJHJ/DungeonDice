@@ -601,6 +601,11 @@ PrefabInstance:
       propertyPath: eventTextBox
       value: 
       objectReference: {fileID: 305745947}
+    - target: {fileID: 1205680495565235004, guid: 1c7ec926c40a25e4e97840631d4f7ea7,
+        type: 3}
+      propertyPath: playerDice
+      value: 
+      objectReference: {fileID: 528906202789250484}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1c7ec926c40a25e4e97840631d4f7ea7, type: 3}
 --- !u!1001 &2483332357431881021
@@ -1400,7 +1405,7 @@ PrefabInstance:
     - target: {fileID: 528906202798855761, guid: f35f0e54662082c4da2c568a45de0202,
         type: 3}
       propertyPath: initialGold
-      value: 30
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 2559257721852585735, guid: f35f0e54662082c4da2c568a45de0202,
         type: 3}

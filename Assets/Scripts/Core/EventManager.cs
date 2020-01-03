@@ -7,6 +7,7 @@ using DungeonDice.Tiles;
 using TMPro;
 using DungeonDice.UI;
 using DungeonDice.Combat;
+using DungeonDice.Dices;
 
 namespace DungeonDice.Core
 {
@@ -15,6 +16,8 @@ namespace DungeonDice.Core
         [SerializeField] TextMeshProUGUI tileName;
         [SerializeField] EventButtons eventButtons;
         [SerializeField] EventTextBox eventTextBox;
+
+        [SerializeField] GameObject playerDice;
 
         string currentDescription;
 
@@ -40,10 +43,10 @@ namespace DungeonDice.Core
 
         private void Update()
         {
-            if(eventButtons.buttons[0].gameObject.activeSelf)
+            if (eventButtons.buttons[0].gameObject.activeSelf)
             {
                 UpdateOptionButtons(currentEvent);
-            }            
+            }
         }
 
         IEnumerator HandleEndBattle()
@@ -66,14 +69,14 @@ namespace DungeonDice.Core
 
             yield return StartCoroutine(OpenEventTextBox());
 
-            if(!tileToInitialize.isChanged)
+            if (!tileToInitialize.isChanged)
             {
                 MoveToNextEvent(tileToInitialize.initialTileEvent0);
             }
             else
             {
                 MoveToNextEvent(tileToInitialize.initialTileEvent1);
-            }         
+            }
         }
 
         IEnumerator OpenEventTextBox()
@@ -92,7 +95,7 @@ namespace DungeonDice.Core
             StopAllCoroutines();
 
             UpdateEvent(eventToUpdate);
-            HandleEvent();
+            StartCoroutine(HandleEvent());
         }
 
         void UpdateEvent(TileEvent eventToUpdate)
@@ -107,14 +110,51 @@ namespace DungeonDice.Core
             eventTextBox.EnqueueDescriptions(currentEvent.descriptions);
         }
 
-        void HandleEvent()
+        IEnumerator HandleEvent()
         {
-            if (currentEvent.tileEventEffect != null)
+            if(currentEvent.diceCheck == DiceType.close) playerDice.SetActive(false);
+
+            if (currentEvent.eventBranch != null)
             {
-                currentEvent.tileEventEffect.Activate();
+                yield return StartCoroutine(HandleBranch());
+            }
+            else
+            {
+                if (currentEvent.tileEventEffect != null)
+                {
+                    currentEvent.tileEventEffect.Activate();
+                }
+
+                StartCoroutine(UpdateDescription());
+            }
+        }
+
+        IEnumerator HandleBranch()
+        {
+            int value = 0;
+
+            if (currentEvent.diceCheck != DiceType.none)
+            {
+                Dice diceToRoll = null;
+
+                if (currentEvent.diceCheck == DiceType.explore) diceToRoll = FindObjectOfType<DiceContainer>().currentExploreDice;
+                else if (currentEvent.diceCheck == DiceType.combat) diceToRoll = FindObjectOfType<DiceContainer>().currentCombatDice;
+
+                playerDice.SetActive(true);
+                DiceRoller diceRoller = playerDice.GetComponent<DiceRoller>();
+                diceRoller.TriggerDiceRoll(diceToRoll);
+
+                while (diceRoller.isRolling)
+                {
+                    yield return null;
+                }
+
+                Side resultSide = diceToRoll.sides[diceRoller.resultIndex];
+                value = resultSide.value;
             }
 
-            StartCoroutine(UpdateDescription());
+            TileEvent nextEvent = currentEvent.options[currentEvent.eventBranch.GetBranch(value)].nextEvent;
+            MoveToNextEvent(nextEvent);
         }
 
         IEnumerator UpdateDescription()
@@ -134,7 +174,7 @@ namespace DungeonDice.Core
         {
             for (int i = 0; i < currentEvent.options.Length; i++)
             {
-                if(currentEvent.options[i].label == "")
+                if (currentEvent.options[i].label == "")
                 {
                     continue;
                 }

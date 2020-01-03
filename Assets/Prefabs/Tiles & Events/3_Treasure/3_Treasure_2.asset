@@ -14,7 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveConditions:
   - {fileID: 11400000, guid: a6adc777b810fdd4f82a53601cd2a2ef, type: 2}
-  tileEventEffect: {fileID: 11400000, guid: 429fe6c6c860ea847b3ef51c924b1a98, type: 2}
+  diceCheck: 
+  eventBranch: {fileID: 0}
+  tileEventEffect: {fileID: 11400000, guid: bd4b615a67a813746bf87a01df02f7fd, type: 2}
   descriptions: []
   options:
   - label: "\uC9C0\uB098\uAC04\uB2E4."

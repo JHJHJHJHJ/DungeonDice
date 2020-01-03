@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e7569b0e95673554d84b7f401a904447, type: 3}
-  m_Name: GetItem
+  m_Script: {fileID: 11500000, guid: 3373a2919522aae4fb72bc004a773740, type: 3}
+  m_Name: DestroyObject
   m_EditorClassIdentifier: 
-  itemToGet: {fileID: 2183558669143576927, guid: 140a3a507c9da834283e87134333382f,
-    type: 3}

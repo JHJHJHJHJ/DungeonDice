@@ -1,15 +1,24 @@
 using UnityEngine;
+using DungeonDice.Dices;
 
 namespace DungeonDice.Tiles
 {
-    [CreateAssetMenu(fileName = "Event", menuName = "DungeonDice/New TileEvent", order = 0)]
+    [CreateAssetMenu(fileName = "Event", menuName = "DungeonDice/Tile Event", order = 0)]
     public class TileEvent : ScriptableObject
     {
+        [Header("Move Condition")]
         [SerializeField] MoveCondition[] moveConditions;
 
+        [Header("Branch")]
+        [Tooltip("explore / combat")] public DiceType diceCheck;
+        public EventBranch eventBranch;
+        
+        [Header("Event Info")]
         public TileEventEffect tileEventEffect;
         [TextArea]
         public string[] descriptions;
+
+        [Header("Next Event")]
         public Option[] options;
 
         public bool CanMove()

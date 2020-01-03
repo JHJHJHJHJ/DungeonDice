@@ -22,3 +22,4 @@ MonoBehaviour:
   - {fileID: 4160454799220381735, guid: 03f04af9ad6eb9b4f856fcb9b6b2c8f7, type: 3}
   etcTiles:
   - {fileID: 4160454799220381735, guid: 14aedaf8a21f30947a55722e96ebfd95, type: 3}
+  - {fileID: 3712212365569417261, guid: e935ec34718cb3a449eb80ff696a82e2, type: 3}

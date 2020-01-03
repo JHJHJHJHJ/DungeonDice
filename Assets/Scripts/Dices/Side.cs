@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace DungeonDice.Dices
 {
-    [CreateAssetMenu(fileName = "Side", menuName = "DungeonDice/New Side", order = 0)]
+    [CreateAssetMenu(fileName = "Side", menuName = "DungeonDice/Side", order = 0)]
     public class Side : ScriptableObject
     {
         public Sprite sideSprite;

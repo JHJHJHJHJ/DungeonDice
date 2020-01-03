@@ -15,10 +15,12 @@ MonoBehaviour:
   moveConditions:
   - {fileID: 11400000, guid: 02c4f4fb6ebe47440b1872854c9c0ea9, type: 2}
   - {fileID: 11400000, guid: 47de8392ad967104a87010096da5cd69, type: 2}
+  diceCheck: 
+  eventBranch: {fileID: 0}
   tileEventEffect: {fileID: 11400000, guid: 75930b2513b3a2b42912b8ebcdc89bc2, type: 2}
   descriptions: []
   options:
   - label: "\uB354 \uB458\uB7EC\uBCF8\uB2E4."
     nextEvent: {fileID: 11400000, guid: fd3714b3177f3e74da48a802a6d852c2, type: 2}
   - label: "\uC9C0\uB098\uCE5C\uB2E4."
-    nextEvent: {fileID: 11400000, guid: ea5fb9ecaf73abe4d8ed5cbdf800ec9a, type: 2}
+    nextEvent: {fileID: 11400000, guid: 32d9e46ed5f9a974d9fa12aaa805c172, type: 2}

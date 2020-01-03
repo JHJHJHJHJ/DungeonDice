@@ -58,11 +58,6 @@ namespace DungeonDice.Objects
 
             itemList[currentIndex] = null;
             FindObjectOfType<Ground>().shopItemObjects[currentIndex].SetActive(false);
-
-            if(isEmpty())
-            {
-                FindObjectOfType<Player>().currentTile.Change();
-            }
         }
 
         public bool isEmpty()

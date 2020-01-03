@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace DungeonDice.Tiles
 {
-    [CreateAssetMenu(fileName = "LevelProgression", menuName = "DungeonDice/New LevelProgression", order = 0)]
+    [CreateAssetMenu(fileName = "LevelProgression", menuName = "DungeonDice/Level Progression", order = 0)]
     public class TileProgression : ScriptableObject
     {
         [SerializeField] int[] progressionScale;

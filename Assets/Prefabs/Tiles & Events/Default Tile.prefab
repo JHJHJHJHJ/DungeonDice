@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3352228441126411406}
   m_Layer: 0
   m_Name: Default Tile
-  m_TagString: Untagged
+  m_TagString: Tile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,11 +45,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tileInfo:
+    tileType: 0
     number: 0
     name: "\uB514\uD3F4\uD2B8"
     ground: {fileID: 871994740511994642, guid: f151253db6d60094d9d4c6bd9837b8d5, type: 3}
     description: "\uC774\uAC83\uC740 \uB514\uD3F4\uD2B8 \uD0C0\uC77C\uC785\uB2C8\uB2E4."
-    initialTileEvent: {fileID: 11400000, guid: 25f7794ad0a947944b650e6f0faf034c, type: 2}
+  isHidden: 0
+  spriteColor: 1
+  initialTileEvent0: {fileID: 0}
+  isChanged: 0
+  initialTileEvent1: {fileID: 0}
 --- !u!1 &3352228441549822677
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,7 +123,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -1
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0470f28d2c78e5747a9bc79f2c112d5a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3ea5bd5729ac8343960d5cc78c9cfe0, type: 3}
+  m_Name: Success
+  m_EditorClassIdentifier: 
+  moveConditions: []
+  diceCheck: 3
+  eventBranch: {fileID: 0}
+  tileEventEffect: {fileID: 11400000, guid: 981a458ba35c50741b7c4250a2edd5e9, type: 2}
+  descriptions:
+  - "\uB2F9\uC2E0\uC740 \uC7AC\uBE60\uB974\uAC8C \uBB44\uC744 \uB0A0\uB824 \uD654\uC0B4\uC744
+    \uD53C\uD588\uB2E4!"
+  options:
+  - label: "\uC870\uC2EC\uD788 \uB098\uC544\uAC04\uB2E4."
+    nextEvent: {fileID: 0}

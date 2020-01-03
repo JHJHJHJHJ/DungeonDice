@@ -6,8 +6,8 @@ using DungeonDice.UI;
 
 namespace DungeonDice.Tiles
 {
-    [CreateAssetMenu(fileName = "GetItem", menuName = "DungeonDice/Tile Event Effect/GetItem")]
-    public class GetItem : TileEventEffect
+    [CreateAssetMenu(fileName = "GetTreasure", menuName = "DungeonDice/Tile Event Effect/GetTreasure")]
+    public class GetTreasure : TileEventEffect
     {
         public override void Activate()
         {

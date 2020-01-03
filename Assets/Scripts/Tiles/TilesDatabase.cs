@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace DungeonDice.Tiles
 {
-    [CreateAssetMenu(fileName = "TilesDatabase", menuName = "DungeonDice/New TilesDatabase", order = 0)]
+    [CreateAssetMenu(fileName = "TilesDatabase", menuName = "DungeonDice/Tiles Database", order = 0)]
     public class TilesDatabase : ScriptableObject
     {
         public Tile[] normalTiles;
