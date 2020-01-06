@@ -145,7 +145,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 834651769
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -1558839733072737595, guid: 1cb2efdd851c3884591fac2f9b1bee06,
     type: 3}
@@ -627,7 +627,7 @@ MonoBehaviour:
   dicePatterns:
   - diceIndexes: 00000000
   enemyDices:
-  - dice: {fileID: 8095486095599290455, guid: 57c5cb451b25dca459847ddc5914998e, type: 3}
+  - dice: {fileID: 7393144346068059372, guid: 013e35a7d5c064d40937362ad770c6b5, type: 3}
     description: "\uC740(\uB294) \uACF5\uACA9\uD560 \uAE30\uD68C\uB97C \n\uC5FF\uBCF4\uACE0
       \uC788\uB2E4."
   minGold: 5

@@ -1067,6 +1067,30 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 7393144346068059372, guid: 399211e9dabe47e459b624ee1db58c88,
         type: 3}
+    - target: {fileID: 5359648304412381271, guid: 38a04537f2e193a42addcb8482bfc77e,
+        type: 3}
+      propertyPath: defaultMoveDices.Array.data[0]
+      value: 
+      objectReference: {fileID: 7393144346068059372, guid: c91b2415c177b0647b425f9dfa634acc,
+        type: 3}
+    - target: {fileID: 5359648304412381271, guid: 38a04537f2e193a42addcb8482bfc77e,
+        type: 3}
+      propertyPath: defaultMoveDices.Array.data[1]
+      value: 
+      objectReference: {fileID: 7393144346068059372, guid: 4ebf8094d580c7d458b4880b403b840a,
+        type: 3}
+    - target: {fileID: 5359648304412381271, guid: 38a04537f2e193a42addcb8482bfc77e,
+        type: 3}
+      propertyPath: defaultCombatDices.Array.data[0]
+      value: 
+      objectReference: {fileID: 7393144346068059372, guid: bc005344e1481b046b37873568214b4a,
+        type: 3}
+    - target: {fileID: 5359648304412381271, guid: 38a04537f2e193a42addcb8482bfc77e,
+        type: 3}
+      propertyPath: defaultCombatDices.Array.data[1]
+      value: 
+      objectReference: {fileID: 7393144346068059372, guid: d850dbbea1a3bf4448be317cc2c50ba2,
+        type: 3}
     - target: {fileID: 5359648304412381289, guid: 38a04537f2e193a42addcb8482bfc77e,
         type: 3}
       propertyPath: m_Name
