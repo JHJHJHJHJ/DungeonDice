@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DungeonDice.Characters;
 
 namespace DungeonDice.Dices
 {
@@ -23,6 +24,23 @@ namespace DungeonDice.Dices
         public void RandomizeDice() // 애니메이션에서 실행됨
         {
             int randomIndex = Random.Range(0, diceToRoll.sides.Length);
+            resultIndex = randomIndex;
+
+            GetComponent<SpriteRenderer>().sprite = diceToRoll.sides[resultIndex].sideSprite;
+        }
+
+        public void RandomizeResultDice() // 애니메이션에서 실행됨
+        {
+            int randomIndex = 0;
+            if(FindObjectOfType<Player>().foresee != 0)
+            {
+                randomIndex = FindObjectOfType<Player>().foresee - 1;
+                FindObjectOfType<Player>().SetForesee(0);
+            }
+            else
+            {
+                randomIndex = Random.Range(0, diceToRoll.sides.Length);
+            }
 
             resultIndex = randomIndex;
 

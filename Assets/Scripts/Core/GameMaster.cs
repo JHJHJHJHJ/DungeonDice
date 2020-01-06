@@ -46,6 +46,7 @@ namespace DungeonDice.Core
         {
             stateHolder.SetPhase(Phase.EXPLORE);
             diceUI.SetUIAtPhase(Phase.EXPLORE);
+            
         }
 
         void HandleTileEventPhase()

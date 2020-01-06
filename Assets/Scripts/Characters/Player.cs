@@ -17,6 +17,8 @@ namespace DungeonDice.Characters
 
         public bool isShopping = false;
 
+        public int foresee = 0;
+
         Rigidbody2D myRigidbody;
         Animator animator;
         HP hp;
@@ -111,6 +113,11 @@ namespace DungeonDice.Characters
                     return currentTileIndex - 1;
                 }
             }
+        }
+
+        public void SetForesee(int value)
+        {
+            foresee = value;
         }
     }
 }

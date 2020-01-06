@@ -59,6 +59,7 @@
      <Compile Include="Assets\Scripts\Dices\DiceEffect.cs" />
      <Compile Include="Assets\Scripts\Dices\DiceEffects\Combat\DealDamage.cs" />
      <Compile Include="Assets\Scripts\Dices\DiceEffects\Combat\GenerateShield.cs" />
+     <Compile Include="Assets\Scripts\Dices\DiceEffects\Explore\Foresee.cs" />
      <Compile Include="Assets\Scripts\Dices\DiceEffects\Explore\MoveBackward.cs" />
      <Compile Include="Assets\Scripts\Dices\DiceEffects\Explore\MovePlayer.cs" />
      <Compile Include="Assets\Scripts\Dices\DiceRoller.cs" />
@@ -77,6 +78,7 @@
      <Compile Include="Assets\Scripts\Objects\Enemy.cs" />
      <Compile Include="Assets\Scripts\Objects\Shop.cs" />
      <Compile Include="Assets\Scripts\Objects\Treasure.cs" />
+     <Compile Include="Assets\Scripts\Stats\Buffer.cs" />
      <Compile Include="Assets\Scripts\Stats\FP.cs" />
      <Compile Include="Assets\Scripts\Stats\Gold.cs" />
      <Compile Include="Assets\Scripts\Stats\HP.cs" />

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 108729da14e960741a8f4c6360cea467, type: 3}
+  m_Name: Foresee 4
+  m_EditorClassIdentifier: 
+  sideSprite: {fileID: -970242747612084519, guid: 02a7552c3cf03ea43b2286732b88e6e6,
+    type: 3}
+  value: 4
+  sideName: "\uC608\uC5B8"
+  description: "\uB2E4\uC74C \uAD74\uB9AC\uB294 \uC8FC\uC0AC\uC704 \uACB0\uACFC\uB294
+    \uB124 \uBC88\uC9F8 \uBA74\uC774 \uB41C\uB2E4."
+  diceEffect: {fileID: 11400000, guid: a6d0547dc9c4a114db497fc9b8317cc7, type: 2}
