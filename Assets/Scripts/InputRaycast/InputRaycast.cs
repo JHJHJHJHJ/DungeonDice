@@ -3,16 +3,19 @@ using DungeonDice.UI;
 using DungeonDice.Objects;
 using DungeonDice.Core;
 using DungeonDice.Characters;
+using DungeonDice.Tiles;
 
 public class InputRaycast : MonoBehaviour
 {
     DiceUI diceUI;
+    TileSelector tileSelector;
 
     bool enemyWindowIsOpen = false;
 
     private void Awake()
     {
         diceUI = FindObjectOfType<DiceUI>();
+        tileSelector = FindObjectOfType<TileSelector>();
     }
 
     private void Update()
@@ -29,17 +32,7 @@ public class InputRaycast : MonoBehaviour
 
             if (hit)
             {
-                if (hit.collider.CompareTag("EnemyDice"))
-                {
-                    ToggleEnemyDiceWindow();
-                }
-
-                if (hit.collider.CompareTag("ShopObject"))
-                {
-                    if(!FindObjectOfType<Player>().isShopping) return;
-                    
-                    FindObjectOfType<ShopManager>().SelectThisItem(hit.collider.gameObject);
-                }
+                HandleHit(hit);
             }
         }
     }
@@ -54,17 +47,34 @@ public class InputRaycast : MonoBehaviour
 
                 if (hit)
                 {
-                    if (hit.collider.CompareTag("EnemyDice"))
-                    {
-                        ToggleEnemyDiceWindow();
-                    }
-
-                    if (hit.collider.CompareTag("ShopObject"))
-                    {
-                        FindObjectOfType<ShopManager>().SelectThisItem(hit.collider.gameObject);
-                    }
+                    HandleHit(hit);
                 }
             }
+        }
+    }
+
+    void HandleHit(RaycastHit2D hit)
+    {
+        if (hit.collider.CompareTag("EnemyDice"))
+        {
+            ToggleEnemyDiceWindow();
+        }
+
+        if (hit.collider.CompareTag("ShopObject"))
+        {
+            if (!FindObjectOfType<Player>().isShopping) return;
+
+            FindObjectOfType<ShopManager>().SelectThisItem(hit.collider.gameObject);
+        }
+
+        if (hit.collider.CompareTag("Tile"))
+        {
+            if (!tileSelector.isSelecting) return;
+
+            Tile selectedTile = hit.collider.GetComponent<Tile>();
+
+            if(!selectedTile.isSelected) tileSelector.SelectTile(selectedTile);
+            else tileSelector.UnselectTile(selectedTile);
         }
     }
 

@@ -17,6 +17,9 @@ namespace DungeonDice.Tiles
         public bool isChanged = false;
         public TileEvent initialTileEvent1;
 
+        [HideInInspector]
+        public bool isSelected = false;
+
         Transform tileObject = null;
 
         public void SetUpTile()

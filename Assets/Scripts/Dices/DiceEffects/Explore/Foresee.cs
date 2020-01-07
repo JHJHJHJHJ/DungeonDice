@@ -12,6 +12,10 @@ namespace DungeonDice.Dices
             Player player = FindObjectOfType<Player>();
             player.SetForesee(value);
 
+            string message = "예언" + value.ToString();
+
+            FindObjectOfType<GameMessage>().SetMessage(message);
+
             FindObjectOfType<StateHolder>().SetPhaseToEvent();
         }
 

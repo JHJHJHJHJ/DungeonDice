@@ -36,6 +36,7 @@ namespace DungeonDice.Dices
             {
                 randomIndex = FindObjectOfType<Player>().foresee - 1;
                 FindObjectOfType<Player>().SetForesee(0);
+                FindObjectOfType<GameMessage>().SetMessage("");
             }
             else
             {
