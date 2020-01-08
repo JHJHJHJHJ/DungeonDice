@@ -15,7 +15,10 @@ public class GameMessage : MonoBehaviour
 
     public void SetMessage(string message)
     {
-        messageText.text = message;
-        messageShadow.text = message;
+        if(messageShadow != null)
+        {
+            messageShadow.text = message;
+        }
+        messageText.text = message; 
     }
 }

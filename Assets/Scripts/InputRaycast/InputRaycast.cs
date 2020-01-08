@@ -67,15 +67,15 @@ public class InputRaycast : MonoBehaviour
             FindObjectOfType<ShopManager>().SelectThisItem(hit.collider.gameObject);
         }
 
-        if (hit.collider.CompareTag("Tile"))
-        {
-            if (!tileSelector.isSelecting) return;
+        // if (hit.collider.CompareTag("Tile"))
+        // {
+        //     if (!tileSelector.isSelecting) return;
 
-            Tile selectedTile = hit.collider.GetComponent<Tile>();
+        //     Tile selectedTile = hit.collider.GetComponent<Tile>();
 
-            if(!selectedTile.isSelected) tileSelector.SelectTile(selectedTile);
-            else tileSelector.UnselectTile(selectedTile);
-        }
+        //     if(!selectedTile.isSelected) tileSelector.SelectTile(selectedTile);
+        //     else tileSelector.UnselectTile(selectedTile);
+        // }
     }
 
     void ToggleEnemyDiceWindow()

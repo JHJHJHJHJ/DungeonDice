@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 108729da14e960741a8f4c6360cea467, type: 3}
+  m_Name: Teleport 4
+  m_EditorClassIdentifier: 
+  sideSprite: {fileID: 3609266577381569754, guid: be0a5f566a5dabd4398d6468ee974006,
+    type: 3}
+  value: 4
+  sideName: "\uD154\uB808\uD3EC\uD2B8"
+  description: "\uC6D0\uD558\uB294 \uD0C0\uC77C\uC744 \uC120\uD0DD\uD558\uC5EC \uC774\uB3D9\uD55C\uB2E4."
+  diceEffect: {fileID: 11400000, guid: cf5f24fb91adb144a88d2c9d89cc4fae, type: 2}

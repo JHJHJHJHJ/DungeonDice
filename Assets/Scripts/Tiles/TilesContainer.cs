@@ -34,6 +34,7 @@ namespace DungeonDice.Tiles
             for (int i = 0; i < spawnPositions.Length; i++) // spawn Tiles
             {
                 Tile newTile = Instantiate(newTileList[i], spawnPositions[i].transform.position, Quaternion.identity, transform);
+                newTile.index = i;
                 currentTileList.Add(newTile);
                 newTile.SetUpTile();
             }

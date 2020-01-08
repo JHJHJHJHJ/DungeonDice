@@ -9,6 +9,7 @@ namespace DungeonDice.Tiles
         public TileInfo tileInfo;
 
         [Header("Tile State")]
+        public int index = 0;
         public bool isHidden = false;
         public float spriteColor = 1f;
 
@@ -19,6 +20,7 @@ namespace DungeonDice.Tiles
 
         [HideInInspector]
         public bool isSelected = false;
+        [SerializeField] SpriteRenderer outline;
 
         Transform tileObject = null;
 
@@ -49,7 +51,7 @@ namespace DungeonDice.Tiles
 
             foreach (Transform child in transform)
             {
-                if (!child.GetComponent<SpriteRenderer>()) return;
+                if (!child.GetComponent<SpriteRenderer>() || child.CompareTag("Outline")) return;
 
                 child.GetComponent<SpriteRenderer>().color = new Color(spriteColor, spriteColor, spriteColor, 1f);
             }
@@ -67,7 +69,7 @@ namespace DungeonDice.Tiles
 
             foreach (Transform child in transform)
             {
-                if (!child.GetComponent<SpriteRenderer>()) continue;
+                if (!child.GetComponent<SpriteRenderer>() || child.CompareTag("Outline")) continue;
 
                 child.GetComponent<SpriteRenderer>().color = new Color(spriteColor, spriteColor, spriteColor, 1f);
             }
@@ -82,6 +84,12 @@ namespace DungeonDice.Tiles
         public void Change()
         {
             isChanged = true;
+        }
+
+        public void UpdateThisTileSelect(bool isSelected)
+        {
+            this.isSelected = isSelected;
+            outline.gameObject.SetActive(isSelected);
         }
     }
 

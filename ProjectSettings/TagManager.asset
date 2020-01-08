@@ -10,6 +10,8 @@ TagManager:
   - EnemyDice
   - Shield
   - ShopObject
+  - Item
+  - Outline
   layers:
   - Default
   - TransparentFX
