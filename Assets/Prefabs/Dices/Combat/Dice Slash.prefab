@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &8103642153340539539
+--- !u!1001 &6282972259566796721
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 7445704302492066456, guid: a3a75e47ca4a95c4fac5dab292068a9e,
         type: 3}
       propertyPath: m_Name
-      value: Dice Step
+      value: Dice Slash
       objectReference: {fileID: 0}
     - target: {fileID: 7445704302492066457, guid: a3a75e47ca4a95c4fac5dab292068a9e,
         type: 3}
@@ -19,40 +19,52 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7445704302492066457, guid: a3a75e47ca4a95c4fac5dab292068a9e,
         type: 3}
+      propertyPath: repSprite
+      value: 
+      objectReference: {fileID: 2482976900042804838, guid: 3c6175d4d345a4c4eb575aff91e2d673,
+        type: 3}
+    - target: {fileID: 7445704302492066457, guid: a3a75e47ca4a95c4fac5dab292068a9e,
+        type: 3}
       propertyPath: sides.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 3bcac81f85ffdc44c85b3db6b9ab4886,
+      objectReference: {fileID: 11400000, guid: 3ced3f82f8a604846b347ba21094749c,
         type: 2}
     - target: {fileID: 7445704302492066457, guid: a3a75e47ca4a95c4fac5dab292068a9e,
         type: 3}
       propertyPath: sides.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 32167d12a788b3d498aa17278858e387,
+      objectReference: {fileID: 11400000, guid: 3ced3f82f8a604846b347ba21094749c,
         type: 2}
     - target: {fileID: 7445704302492066457, guid: a3a75e47ca4a95c4fac5dab292068a9e,
         type: 3}
       propertyPath: sides.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 4d816de8ded724b4f82680d3ad6e6534,
+      objectReference: {fileID: 11400000, guid: 5a9ec568eec89aa45b91bb842f5030bc,
         type: 2}
     - target: {fileID: 7445704302492066457, guid: a3a75e47ca4a95c4fac5dab292068a9e,
         type: 3}
       propertyPath: sides.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: 676bcecc266697d45aca32d2a246f21c,
+      objectReference: {fileID: 11400000, guid: 5a9ec568eec89aa45b91bb842f5030bc,
         type: 2}
     - target: {fileID: 7445704302492066457, guid: a3a75e47ca4a95c4fac5dab292068a9e,
         type: 3}
       propertyPath: sides.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: c92bdff8e16d4604d9fd6108f14d1230,
+      objectReference: {fileID: 11400000, guid: 5a9ec568eec89aa45b91bb842f5030bc,
         type: 2}
     - target: {fileID: 7445704302492066457, guid: a3a75e47ca4a95c4fac5dab292068a9e,
         type: 3}
       propertyPath: sides.Array.data[5]
       value: 
-      objectReference: {fileID: 11400000, guid: 25025471e6817414282d4ba3702b2991,
+      objectReference: {fileID: 11400000, guid: 97e6417d657748f4793434a611b23c2d,
         type: 2}
+    - target: {fileID: 7445704302492066462, guid: a3a75e47ca4a95c4fac5dab292068a9e,
+        type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 2482976900042804838, guid: 3c6175d4d345a4c4eb575aff91e2d673,
+        type: 3}
     - target: {fileID: 7445704302492066463, guid: a3a75e47ca4a95c4fac5dab292068a9e,
         type: 3}
       propertyPath: m_LocalPosition.x
